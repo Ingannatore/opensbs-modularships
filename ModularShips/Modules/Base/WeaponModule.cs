@@ -7,7 +7,7 @@ namespace ModularShips.Modules.Base
         public int EnergyPerShot { get; protected set; }
         public int TimePerShot { get; protected set; }
         public Range Range { get; protected set; }
-        public int DamagePerShot { get; protected set; }
+        public DamageProfile DamagePerShot { get; protected set; }
         public int AmmunitionPerShot { get; protected set; }
         public AmmunitionType? AmmunitionType { get; protected set; }
         public Orientation Orientation { get; }
@@ -26,7 +26,7 @@ namespace ModularShips.Modules.Base
             return this;
         }
 
-        protected WeaponModule SetDamageProfile(Range range, int damagePerShot)
+        protected WeaponModule SetDamageProfile(Range range, DamageProfile damagePerShot)
         {
             Range = range;
             DamagePerShot = damagePerShot;
