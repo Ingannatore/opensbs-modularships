@@ -1,13 +1,12 @@
 ﻿using ModularShips.Data;
-using ModularShips.Modules;
 using ModularShips.Modules.Base;
 using ModularShips.Starships.Base;
 
 namespace ModularShips.Starships
 {
-    public class ViperStarship : Starship
+    public class ViperInterceptor : Starship
     {
-        public ViperStarship(string name) : base(name, "Viper", StarshipCategory.Interceptor, 1)
+        public ViperInterceptor(string name) : base(name, "Viper", StarshipCategory.Interceptor, 1)
         {
             InstallHull(Hull.Small);
 

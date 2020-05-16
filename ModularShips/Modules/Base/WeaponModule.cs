@@ -6,10 +6,9 @@ namespace ModularShips.Modules.Base
     {
         public int EnergyPerShot { get; protected set; }
         public int TimePerShot { get; protected set; }
-        public Range Range { get; protected set; }
-        public DamageProfile DamagePerShot { get; protected set; }
-        public int AmmunitionPerShot { get; protected set; }
         public AmmunitionType? AmmunitionType { get; protected set; }
+        public int AmmunitionPerShot { get; protected set; }
+        public Range Range { get; protected set; }
         public Orientation Orientation { get; }
 
         protected WeaponModule(string name, Size size, Orientation orientation) : base(
@@ -26,17 +25,16 @@ namespace ModularShips.Modules.Base
             return this;
         }
 
-        protected WeaponModule SetDamageProfile(Range range, DamageProfile damagePerShot)
+        protected WeaponModule SetRange(Range range)
         {
             Range = range;
-            DamagePerShot = damagePerShot;
             return this;
         }
 
-        protected WeaponModule SetAmmunitionProfile(int ammunitionPerShot, AmmunitionType type)
+        protected WeaponModule SetAmmunitionProfile(AmmunitionType type, int ammunitionPerShot)
         {
-            AmmunitionPerShot = ammunitionPerShot;
             AmmunitionType = type;
+            AmmunitionPerShot = ammunitionPerShot;
             return this;
         }
     }

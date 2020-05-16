@@ -3,10 +3,11 @@
     public enum AmmunitionType
     {
         Projectile = 0,
-        PlasmaCharge = 1,
-        Missile = 2,
-        Torpedo = 3,
-        Mine = 4,
-        Probe = 5,
+        BeamCore = 1,
+        PlasmaCharge = 2,
+        Missile = 3,
+        Torpedo = 4,
+        Mine = 5,
+        Probe = 6,
     }
 }
