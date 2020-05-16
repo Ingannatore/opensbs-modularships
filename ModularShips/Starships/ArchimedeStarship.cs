@@ -1,0 +1,31 @@
+﻿using ModularShips.Modules;
+using ModularShips.Modules.Base;
+using ModularShips.Starships.Base;
+
+namespace ModularShips.Starships
+{
+    public class ArchimedeStarship : Starship
+    {
+        public ArchimedeStarship(string name) : base(name, "Archimede", StarshipCategory.Cruiser, 3)
+        {
+            InstallHull(Hull.Medium);
+
+            AddHullSection(
+                HullSection.HalfFront,
+                ArmourModule.Create(350),
+                ShieldGenerator.Create(-4, 10, 200),
+                Weapon.Create(20, 4, Range.Short, Orientation.QuarterFront),
+                Weapon.Create(20, 4, Range.Short, Orientation.QuarterFront)
+            );
+
+            AddHullSection(
+                HullSection.HalfRear,
+                ArmourModule.Create(350),
+                ReactorModule.Create(10, 350),
+                SublightEngineModule.Create(-4, 150, 1500),
+                ShieldGenerator.Create(-4, 10, 200),
+                SensorsModule.Create(10, Range.Medium)
+            );
+        }
+    }
+}
