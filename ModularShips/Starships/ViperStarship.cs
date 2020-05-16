@@ -16,7 +16,7 @@ namespace ModularShips.Starships
                 SensorsModule.Create(10, Range.Medium),
                 ReactorModule.Create(10, 350),
                 SublightEngineModule.Create(-4, 150, 1500),
-                ShieldGenerator.Create(-4, 10, 200),
+                ShieldGeneratorModule.Create(-4, 10, 200),
                 ArmourModule.Create(350),
                 WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront),
                 WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront)

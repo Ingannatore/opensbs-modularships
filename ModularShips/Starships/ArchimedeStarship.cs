@@ -14,7 +14,7 @@ namespace ModularShips.Starships
             AddHullSection(
                 HullSection.HalfFront,
                 ArmourModule.Create(350),
-                ShieldGenerator.Create(-4, 10, 200),
+                ShieldGeneratorModule.Create(-4, 10, 200),
                 WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront),
                 WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront)
             );
@@ -24,7 +24,7 @@ namespace ModularShips.Starships
                 ArmourModule.Create(350),
                 ReactorModule.Create(10, 350),
                 SublightEngineModule.Create(-4, 150, 1500),
-                ShieldGenerator.Create(-4, 10, 200),
+                ShieldGeneratorModule.Create(-4, 10, 200),
                 SensorsModule.Create(10, Range.Medium)
             );
         }

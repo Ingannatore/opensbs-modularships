@@ -3,7 +3,7 @@
     public enum ModuleCategory
     {
         Reactor = 0,
-        Capacitor = 1,
+        Storage = 1,
         Sensors = 2,
         SublightEngine = 3,
         FtlDrive = 4,

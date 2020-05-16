@@ -2,12 +2,12 @@
 
 namespace ModularShips.Modules.Base
 {
-    public abstract class ShieldGenerator : Module
+    public abstract class ShieldGeneratorModule : Module
     {
         public int RechargeRate { get; }
         public HitPoints Capacity { get; }
 
-        protected ShieldGenerator(string name, Size size, int rechargeRate, int capacity) : base(
+        protected ShieldGeneratorModule(string name, Size size, int rechargeRate, int capacity) : base(
             name, size, ModuleCategory.ShieldGenerator
         )
         {

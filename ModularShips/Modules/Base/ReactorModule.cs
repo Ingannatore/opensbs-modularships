@@ -4,17 +4,17 @@ namespace ModularShips.Modules.Base
 {
     public abstract class ReactorModule : Module
     {
-        protected ReactorModule(string name, Size size, int rate) : base(name, size, ModuleCategory.Reactor)
+        protected ReactorModule(string name, Size size, int energyRate) : base(name, size, ModuleCategory.Reactor)
         {
-            AddEnergyProfile(rate);
+            AddEnergyProfile(energyRate);
         }
 
-        protected ReactorModule(string name, Size size, int rate, int storage) : base(
+        protected ReactorModule(string name, Size size, int energyRate, int capacity) : base(
             name, size, ModuleCategory.Reactor
         )
         {
-            AddEnergyProfile(rate);
-            AddStorage(storage, MatterState.Energy);
+            AddEnergyProfile(energyRate);
+            AddStorage(MatterState.Energy, capacity);
         }
     }
 }

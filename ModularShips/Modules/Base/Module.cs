@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ModularShips.Data;
 
 namespace ModularShips.Modules.Base
@@ -11,7 +12,7 @@ namespace ModularShips.Modules.Base
         public ModuleCategory Category { get; }
         public HitPoints HitPoints { get; protected set; }
         public EnergyUsage EnergyUsage { get; protected set; }
-        public Storage Storage { get; protected set; }
+        public IDictionary<MatterState, StorageCapacity> Storage { get; }
 
         protected Module(string name, Size size, ModuleCategory category)
         {
@@ -19,6 +20,7 @@ namespace ModularShips.Modules.Base
             Name = name;
             Size = size;
             Category = category;
+            Storage = new Dictionary<MatterState, StorageCapacity>();
         }
 
         protected void AddStructure(int maxHitPoints)
@@ -31,9 +33,12 @@ namespace ModularShips.Modules.Base
             EnergyUsage = new EnergyUsage(energyRate);
         }
 
-        protected void AddStorage(int quantity, MatterState type)
+        protected void AddStorage(MatterState type, int capacity)
         {
-            Storage = new Storage(quantity, type);
+            if (!Storage.ContainsKey(type))
+            {
+                Storage.Add(type, new StorageCapacity(capacity));
+            }
         }
     }
 }
