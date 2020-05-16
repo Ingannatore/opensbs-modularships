@@ -1,4 +1,6 @@
-﻿namespace ModularShips
+﻿using ModularShips.Data;
+
+namespace ModularShips
 {
     public class Dimensions
     {

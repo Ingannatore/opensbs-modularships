@@ -1,11 +1,13 @@
-﻿namespace ModularShips
+﻿using ModularShips.Data;
+
+namespace ModularShips
 {
     public class Storage
     {
         public int Quantity { get; }
-        public StorageType Type { get; }
+        public MatterState Type { get; }
 
-        public Storage(int quantity, StorageType type)
+        public Storage(int quantity, MatterState type)
         {
             Quantity = quantity;
             Type = type;

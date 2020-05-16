@@ -1,4 +1,4 @@
-﻿namespace ModularShips.Modules.Base
+﻿namespace ModularShips.Data
 {
     public enum ModuleCategory
     {

@@ -1,4 +1,5 @@
-﻿using ModularShips.Modules;
+﻿using ModularShips.Data;
+using ModularShips.Modules;
 using ModularShips.Modules.Base;
 using ModularShips.Starships.Base;
 
@@ -14,8 +15,8 @@ namespace ModularShips.Starships
                 HullSection.HalfFront,
                 ArmourModule.Create(350),
                 ShieldGenerator.Create(-4, 10, 200),
-                Weapon.Create(20, 4, Range.Short, Orientation.QuarterFront),
-                Weapon.Create(20, 4, Range.Short, Orientation.QuarterFront)
+                WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront),
+                WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront)
             );
 
             AddHullSection(

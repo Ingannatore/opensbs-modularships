@@ -1,11 +1,20 @@
-﻿namespace ModularShips.Modules.Base
+﻿using ModularShips.Data;
+
+namespace ModularShips.Modules.Base
 {
     public abstract class ReactorModule : Module
     {
-        protected ReactorModule(string name, int rate, int storage) : base(name, ModuleCategory.Reactor)
+        protected ReactorModule(string name, Size size, int rate) : base(name, size, ModuleCategory.Reactor)
         {
             AddEnergyProfile(rate);
-            AddStorage(storage, StorageType.Energy);
+        }
+
+        protected ReactorModule(string name, Size size, int rate, int storage) : base(
+            name, size, ModuleCategory.Reactor
+        )
+        {
+            AddEnergyProfile(rate);
+            AddStorage(storage, MatterState.Energy);
         }
     }
 }

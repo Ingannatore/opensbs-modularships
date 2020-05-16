@@ -1,4 +1,4 @@
-﻿namespace ModularShips.Starships.Base
+﻿namespace ModularShips.Data
 {
     public enum StarshipCategory
     {

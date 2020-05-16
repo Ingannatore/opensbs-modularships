@@ -1,4 +1,5 @@
-﻿using ModularShips.Modules;
+﻿using ModularShips.Data;
+using ModularShips.Modules;
 using ModularShips.Modules.Base;
 using ModularShips.Starships.Base;
 
@@ -17,8 +18,8 @@ namespace ModularShips.Starships
                 SublightEngineModule.Create(-4, 150, 1500),
                 ShieldGenerator.Create(-4, 10, 200),
                 ArmourModule.Create(350),
-                Weapon.Create(20, 4, Range.Short, Orientation.QuarterFront),
-                Weapon.Create(20, 4, Range.Short, Orientation.QuarterFront)
+                WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront),
+                WeaponModule.Create(20, 4, Range.Short, Orientation.QuarterFront)
             );
         }
     }

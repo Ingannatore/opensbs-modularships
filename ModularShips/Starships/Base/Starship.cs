@@ -1,4 +1,5 @@
 ﻿using System;
+using ModularShips.Data;
 using ModularShips.Modules.Base;
 
 namespace ModularShips.Starships.Base

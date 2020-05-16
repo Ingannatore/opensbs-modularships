@@ -1,4 +1,4 @@
-﻿namespace ModularShips
+﻿namespace ModularShips.Data
 {
     public enum Size
     {

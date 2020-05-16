@@ -1,10 +1,12 @@
-﻿namespace ModularShips.Modules.Base
+﻿using ModularShips.Data;
+
+namespace ModularShips.Modules.Base
 {
     public abstract class CapacitorModule : Module
     {
-        protected CapacitorModule(string name, int storage) : base(name, ModuleCategory.Capacitor)
+        protected CapacitorModule(string name, Size size, int storage) : base(name, size, ModuleCategory.Capacitor)
         {
-            AddStorage(storage, StorageType.Energy);
+            AddStorage(storage, MatterState.Energy);
         }
     }
 }

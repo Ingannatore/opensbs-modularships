@@ -1,8 +1,10 @@
-﻿namespace ModularShips.Modules.Base
+﻿using ModularShips.Data;
+
+namespace ModularShips.Modules.Base
 {
     public abstract class ArmourModule : Module
     {
-        protected ArmourModule(string name, int hitPoints) : base(name, ModuleCategory.Armour)
+        protected ArmourModule(string name, Size size, int hitPoints) : base(name, size, ModuleCategory.Armour)
         {
             AddStructure(hitPoints);
         }
