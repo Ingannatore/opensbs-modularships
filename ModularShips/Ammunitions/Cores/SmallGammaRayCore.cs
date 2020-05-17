@@ -7,10 +7,7 @@ namespace ModularShips.Ammunitions.Cores
     {
         public SmallGammaRayCore() : base("4MSv Gamma Ray Core", Size.Small)
         {
-            SetDamageProfile(DamageProfile
-                .Create(DamageType.Electromagnetic, 10)
-                .AddDamage(DamageType.Thermal, 2)
-            );
+            SetDamage(Damage.Create(0, 2, 10));
             SetRangeModifier(0.5f);
         }
     }

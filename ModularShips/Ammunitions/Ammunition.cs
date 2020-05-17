@@ -10,7 +10,7 @@ namespace ModularShips.Ammunitions
         public string Name { get; }
         public Size Size { get; }
         public AmmunitionType Type { get; }
-        public DamageProfile Damage { get; protected set; }
+        public Damage Damage { get; protected set; }
         public float RangeModifier { get; protected set; }
 
         protected Ammunition(string name, Size size, AmmunitionType type)
@@ -22,7 +22,7 @@ namespace ModularShips.Ammunitions
             RangeModifier = 1;
         }
 
-        protected void SetDamageProfile(DamageProfile damage)
+        protected void SetDamage(Damage damage)
         {
             Damage = damage;
         }

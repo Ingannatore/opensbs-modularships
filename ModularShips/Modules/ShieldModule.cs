@@ -7,7 +7,7 @@ namespace ModularShips.Modules
     {
         public int RechargeRate { get; }
         public HitPoints Capacity { get; }
-        public DamageProfile DamageResistance { get; protected set; }
+        public Resistance Resistance { get; protected set; }
 
         protected ShieldModule(string name, Size size, int rechargeRate, int capacity) : base(
             name, size, ModuleCategory.Shield
@@ -17,9 +17,9 @@ namespace ModularShips.Modules
             Capacity = new HitPoints(capacity);
         }
 
-        protected void SetDamageResistance(DamageProfile damageResistance)
+        protected void SetResistance(Resistance resistance)
         {
-            DamageResistance = damageResistance;
+            Resistance = resistance;
         }
     }
 }

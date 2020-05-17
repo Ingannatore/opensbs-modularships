@@ -7,10 +7,7 @@ namespace ModularShips.Ammunitions.Projectiles
     {
         public SmallDepletedUraniumProjectile() : base("120mm Depleted Uranium Shell", Size.Small)
         {
-            SetDamageProfile(DamageProfile
-                .Create(DamageType.Kinetic, 8)
-                .AddDamage(DamageType.Thermal, 2)
-            );
+            SetDamage(Damage.Create(8, 2, 0));
             SetRangeModifier(0.75f);
         }
     }

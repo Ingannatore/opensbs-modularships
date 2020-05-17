@@ -14,12 +14,7 @@ namespace ModularShips.Modules.Armours
             "100mm Laminated Steel Plating", Size.Small, 250
         )
         {
-            SetDamageResistance(
-                DamageProfile
-                    .Create(DamageType.Electromagnetic, 50)
-                    .AddDamage(DamageType.Thermal, 30)
-                    .AddDamage(DamageType.Kinetic, 10)
-            );
+            SetResistance(Resistance.Create(0.1f, 0.3f, 0.5f));
         }
     }
 }

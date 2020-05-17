@@ -15,12 +15,7 @@ namespace ModularShips.Modules.Shields
         )
         {
             AddEnergyProfile(-4);
-            SetDamageResistance(
-                DamageProfile
-                    .Create(DamageType.Electromagnetic, 10)
-                    .AddDamage(DamageType.Thermal, 30)
-                    .AddDamage(DamageType.Kinetic, 50)
-            );
+            SetResistance(Resistance.Create(0.5f, 0.3f, 0.1f));
         }
     }
 }
