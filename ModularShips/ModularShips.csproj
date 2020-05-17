@@ -4,15 +4,4 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Ammunitions\Mines" />
-      <Folder Include="Ammunitions\Missiles" />
-      <Folder Include="Ammunitions\PlasmaCharges" />
-      <Folder Include="Ammunitions\Probes" />
-      <Folder Include="Ammunitions\Torpedoes" />
-      <Folder Include="Modules\Weapons\Cannons" />
-      <Folder Include="Modules\Weapons\Launchers" />
-      <Folder Include="Modules\Weapons\Railguns" />
-    </ItemGroup>
-
 </Project>

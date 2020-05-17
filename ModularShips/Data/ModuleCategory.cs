@@ -5,10 +5,10 @@
         Reactor = 0,
         Storage = 1,
         Sensors = 2,
-        SublightEngine = 3,
+        Engine = 3,
         FtlDrive = 4,
         Armour = 5,
-        ShieldGenerator = 6,
+        Shield = 6,
         Weapon = 7,
     }
 }
