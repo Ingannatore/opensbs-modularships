@@ -2,9 +2,6 @@
 {
     public class BoundedValue<T>
     {
-        public T Max { get; }
-        public T Current { get; set; }
-
         public BoundedValue(T max)
         {
             Max = Current = max;
@@ -15,6 +12,9 @@
             Max = max;
             Current = current;
         }
+
+        public T Max { get; }
+        public T Current { get; set; }
 
         public override string ToString()
         {

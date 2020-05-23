@@ -4,6 +4,6 @@
     {
         Kinetic = 0,
         Thermal = 1,
-        Electromagnetic = 2,
+        Electromagnetic = 2
     }
 }
