@@ -1,6 +1,6 @@
 ﻿namespace ModularShips.Data
 {
-    public enum StarshipSlotType
+    public enum HullSlotType
     {
         Reactor = 0,
         Electronics = 1,

@@ -41,15 +41,21 @@
         ModuleStorage = 32,
         ModuleWeapon = 33,
 
-        StarshipBomber = 34,
-        StarshipCarrier = 35,
-        StarshipCruiser = 36,
-        StarshipDreadnought = 37,
-        StarshipFighter = 38,
-        StarshipFreighter = 39,
-        StarshipFrigate = 40,
-        StarshipHeavyCruiser = 41,
-        StarshipInterceptor = 42,
-        StarshipStation = 43
+        HullUltraLight = 34,
+        HullLight = 35,
+        HullMedium = 36,
+        HullHeavy = 37,
+        HullSuperHeavy = 38,
+
+        StarshipBomber = 39,
+        StarshipCarrier = 40,
+        StarshipCruiser = 41,
+        StarshipDreadnought = 42,
+        StarshipFighter = 43,
+        StarshipFreighter = 44,
+        StarshipFrigate = 45,
+        StarshipHeavyCruiser = 46,
+        StarshipInterceptor = 47,
+        StarshipStation = 48
     }
 }

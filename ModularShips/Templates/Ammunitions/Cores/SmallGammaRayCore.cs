@@ -19,8 +19,7 @@ namespace ModularShips.Templates.Ammunitions.Cores
             Hitpoints = 1;
 
             Type = AmmunitionType.Core;
-            Damage = DamagePacket.Create(0, 2, 10);
-            RangeModifier = 0.5f;
+            Damage = Damage.Create(0, 2, 10);
         }
     }
 }

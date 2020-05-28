@@ -12,7 +12,6 @@ namespace ModularShips.Templates
         }
 
         public AmmunitionType Type { get; protected set; }
-        public DamagePacket Damage { get; protected set; }
-        public float RangeModifier { get; protected set; }
+        public Damage Damage { get; protected set; }
     }
 }

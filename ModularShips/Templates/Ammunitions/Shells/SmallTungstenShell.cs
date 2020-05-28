@@ -4,13 +4,13 @@ using ModularShips.Models;
 
 namespace ModularShips.Templates.Ammunitions.Shells
 {
-    public class SmallDepletedUraniumShell : AmmunitionTemplate
+    public class SmallTungstenShell : AmmunitionTemplate
     {
-        public SmallDepletedUraniumShell()
+        public SmallTungstenShell()
         {
-            Id = "ammunition:shell:small:du";
-            Name = "120mm Depleted Uranium Shell";
-            Description = "Kinetic penetrator with a depleted uranium tip";
+            Id = "ammunition:shell:small:tungsten";
+            Name = "120mm Tungsten Shell";
+            Description = "Kinetic penetrator with a Tungsten tip";
             Subcategory = EntitySubcategory.AmmunitionShell;
             Value = 10;
 
@@ -19,7 +19,7 @@ namespace ModularShips.Templates.Ammunitions.Shells
             Hitpoints = 1;
 
             Type = AmmunitionType.Shell;
-            Damage = Damage.Create(8, 4, 0);
+            Damage = Damage.Create(12, 0, 0);
         }
     }
 }
