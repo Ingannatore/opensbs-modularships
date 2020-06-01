@@ -1,0 +1,25 @@
+﻿{
+    "id": "armor:small:steelalloy",
+    "name": "100mm Steel Alloy Plating",
+    "description": "A laminated steel alloy plating, reinforced with molybdenum",
+    "category": "Module",
+    "subcategory": "ModuleArmor",
+    "size": "Small",
+    "value": 5000,
+    "structure": {
+        "mass": 10000,
+        "hitpoints": 80
+    },
+    "armor": {
+        "resists": {
+            "kinetic": 0.5,
+            "thermal": 0.2,
+            "em": 0.1
+        },
+        "capacity": {
+            "front": 80,
+            "center": 80,
+            "rear": 80
+        }
+    }
+}

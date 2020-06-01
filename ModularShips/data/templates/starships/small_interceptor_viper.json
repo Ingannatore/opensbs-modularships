@@ -1,0 +1,18 @@
+﻿{
+    "id": "ship:small:viper",
+    "name": "Viper-class Interceptor",
+    "description": "A fast and agile ship used mainly against fighters and bombers",
+    "category": "Starship",
+    "subcategory": "StarshipInterceptor",
+    "size": "Small",
+    "value": 1000000,
+    "structure": {
+        "mass": 300000,
+        "hitpoints": 500
+    },
+    "slots": {
+        "front": 2,
+        "center": 2,
+        "rear": 2
+    }
+}

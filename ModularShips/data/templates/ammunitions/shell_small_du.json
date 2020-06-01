@@ -1,0 +1,18 @@
+﻿{
+    "id": "ammunition:shell:small:du",
+    "name": "120mm Depleted Uranium Shell",
+    "description": "Kinetic penetrator with a depleted uranium tip",
+    "category": "Ammunition",
+    "subcategory": "AmmunitionShell",
+    "size": "Small",
+    "value": 10,
+    "structure": {
+        "mass": 20,
+        "hitpoints": 1
+    },
+    "damage": {
+        "kinetic": 8,
+        "thermal": 4,
+        "em": 0
+    }
+}

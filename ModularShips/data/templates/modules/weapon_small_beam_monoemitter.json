@@ -1,0 +1,32 @@
+﻿{
+    "id": "weapon:beam:small:monoemitter",
+    "name": "8MJ Mono-Emitter Beam",
+    "description": "A single-emitter beam weapon, optimized for narrow-band wavelengths",
+    "category": "Module",
+    "subcategory": "ModuleWeapon",
+    "size": "Small",
+    "value": 8000,
+    "structure": {
+        "mass": 1500,
+        "hitpoints": 40
+    },
+    "activation": {
+        "mode": "Multi",
+        "time": 4,
+        "energy": 100000
+    },
+    "weapon": {
+        "range": {
+            "optimal": 1000,
+            "maximum": 2000
+        },
+        "magazine": {
+            "size": 1,
+            "reload": 30
+        },
+        "ammunition": {
+            "type": "AmmunitionCore",
+            "consumed": 0
+        }
+    }
+}

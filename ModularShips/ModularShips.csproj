@@ -1,7 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="data\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="data\templates\starships\viper.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="data\templates\modules\shield_small_multilayer.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="data\templates\modules\armor_small_steelalloy.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="data\templates\modules\reactor_small_fusion.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="data\templates\modules\weapon_small_xxx.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="data\templates\modules\sensors_small_radar.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="data\templates\modules\engine_small_ion.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ModularShips.Core\ModularShips.Core.csproj" />
+    </ItemGroup>
 
 </Project>

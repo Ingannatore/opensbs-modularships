@@ -1,0 +1,18 @@
+﻿{
+    "id": "ammunition:core:small:gammaray",
+    "name": "4MSv Gamma Ray Core",
+    "description": "Gamma ray emitter core to be used in small beam weapons",
+    "category": "Ammunition",
+    "subcategory": "AmmunitionCore",
+    "size": "Small",
+    "value": 100,
+    "structure": {
+        "mass": 100,
+        "hitpoints": 1
+    },
+    "damage": {
+        "kinetic": 0,
+        "thermal": 10,
+        "em": 2
+    }
+}

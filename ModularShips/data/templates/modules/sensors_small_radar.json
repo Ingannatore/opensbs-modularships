@@ -1,0 +1,24 @@
+﻿{
+    "id": "sensors:small:radar",
+    "name": "2GHz Radar Array Sensors",
+    "description": "A radar-based sensor array, operating in the 2GHz band",
+    "category": "Module",
+    "subcategory": "ModuleSensors",
+    "size": "Small",
+    "value": 15000,
+    "structure": {
+        "mass": 1000,
+        "hitpoints": 40
+    },
+    "sensors": {
+        "strength": {
+            "emr": 10,
+            "grav": 0,
+            "mag": 0
+        },
+        "range": {
+            "optimal": 4000,
+            "maximum": 8000
+        }
+    }
+}

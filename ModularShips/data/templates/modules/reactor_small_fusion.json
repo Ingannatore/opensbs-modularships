@@ -1,0 +1,22 @@
+﻿{
+    "id": "reactor:small:fusion",
+    "name": "1GJ Compact Fusion Reactor",
+    "description": "A miniaturized deuterium-deuterium fusion reactor",
+    "category": "Module",
+    "subcategory": "ModuleReactor",
+    "size": "Small",
+    "value": 25000,
+    "structure": {
+        "mass": 500,
+        "hitpoints": 40
+    },
+    "activation": {
+        "mode": "None",
+        "time": 1,
+        "energy": -1000000
+    },
+    "storage": {
+        "type": "Energy",
+        "quantity": 350000000
+    }
+}
