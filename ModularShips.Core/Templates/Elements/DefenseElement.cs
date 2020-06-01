@@ -3,7 +3,7 @@
     public class DefenseElement
     {
         public DamageResistsElement Resists { get; set; }
-        public SectionCapacityElement Capacity { get; set; }
+        public SectionElement Values { get; set; }
         public int Regeneration { get; set; }
     }
 }

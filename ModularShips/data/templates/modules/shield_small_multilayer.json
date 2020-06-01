@@ -22,7 +22,7 @@
             "thermal": 0.2,
             "em": 0.1
         },
-        "capacity": {
+        "values": {
             "front": 50,
             "center": 50,
             "rear": 50

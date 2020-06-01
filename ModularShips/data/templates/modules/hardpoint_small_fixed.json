@@ -1,0 +1,14 @@
+﻿{
+    "id": "hardpoint:small:fixed",
+    "name": "Fixed Hardpoint (Small)",
+    "description": "A fixed hardpoint for a small weapon",
+    "category": "Module",
+    "subcategory": "ModuleHardpoint",
+    "size": "Small",
+    "value": 1000,
+    "hardpoint": {
+        "slots": 1,
+        "size": "Small",
+        "fireArc": 90
+    }
+}

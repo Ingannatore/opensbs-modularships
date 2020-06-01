@@ -24,6 +24,7 @@ namespace ModularShips.Core.Templates
         public DefenseElement Armor { get; set; }
         public DefenseElement Shield { get; set; }
 
-        public SectionCapacityElement Slots { get; set; }
+        public SectionElement Slots { get; set; }
+        public HardpointElement Hardpoint { get; set; }
     }
 }

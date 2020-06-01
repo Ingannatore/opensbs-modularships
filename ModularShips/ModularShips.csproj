@@ -30,6 +30,9 @@
         <Content Update="data\templates\modules\engine_small_ion.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <Content Update="data\templates\modules\hardpoint_small_fixed.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
