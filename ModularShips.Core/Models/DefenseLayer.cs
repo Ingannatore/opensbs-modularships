@@ -4,6 +4,6 @@
     {
         Hull = 0,
         Armor = 1,
-        Shield = 2,
+        Shields = 2,
     }
 }

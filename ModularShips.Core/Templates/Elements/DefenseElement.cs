@@ -1,9 +1,12 @@
-﻿namespace ModularShips.Core.Templates.Elements
+﻿using ModularShips.Core.Models;
+
+namespace ModularShips.Core.Templates.Elements
 {
     public class DefenseElement
     {
+        public DefenseLayer Layer { get; set; }
         public DamageResistsElement Resists { get; set; }
-        public SectionElement Values { get; set; }
+        public DefenseValuesElement Values { get; set; }
         public int Regeneration { get; set; }
     }
 }

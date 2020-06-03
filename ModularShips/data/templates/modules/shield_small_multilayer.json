@@ -15,7 +15,8 @@
         "time": 1,
         "energy": 200000
     },
-    "shield": {
+    "defense": {
+        "layer": "Shields",
         "regeneration": 10,
         "resists": {
             "kinetic": 0.5,

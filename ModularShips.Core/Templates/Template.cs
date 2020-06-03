@@ -1,4 +1,6 @@
-﻿using ModularShips.Core.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using ModularShips.Core.Models;
 using ModularShips.Core.Templates.Elements;
 
 namespace ModularShips.Core.Templates
@@ -15,16 +17,27 @@ namespace ModularShips.Core.Templates
 
         public StructureElement Structure { get; set; }
         public ActivationElement Activation { get; set; }
-        public StorageElements Storage { get; set; }
         public DamageElement Damage { get; set; }
 
         public EngineElement Engine { get; set; }
         public SensorsElement Sensors { get; set; }
         public WeaponElement Weapon { get; set; }
-        public DefenseElement Armor { get; set; }
-        public DefenseElement Shield { get; set; }
+        public DefenseElement Defense { get; set; }
 
-        public SectionElement Slots { get; set; }
-        public HardpointElement Hardpoint { get; set; }
+        public IEnumerable<StorageElement> Storage { get; set; }
+        public IEnumerable<string> Modules { get; set; }
+
+        public Template()
+        {
+            Storage = new List<StorageElement>();
+            Modules = new List<string>();
+        }
+
+        public int GetEnergyStorage()
+        {
+            return Storage
+                .Where(s => s.Type == StorageType.Energy)
+                .Sum(s => s.Quantity);
+        }
     }
 }

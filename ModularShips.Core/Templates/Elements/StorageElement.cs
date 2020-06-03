@@ -2,7 +2,7 @@
 
 namespace ModularShips.Core.Templates.Elements
 {
-    public class StorageElements
+    public class StorageElement
     {
         public StorageType Type { get; set; }
         public int Quantity { get; set; }

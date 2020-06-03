@@ -10,9 +10,22 @@
         "mass": 300000,
         "hitpoints": 500
     },
-    "slots": {
-        "front": 2,
-        "center": 2,
-        "rear": 2
-    }
+    "storage": [
+        {
+            "type": "Energy",
+            "quantity": 350000000
+        },
+        {
+            "type": "Cargo",
+            "quantity": 200
+        }
+    ],
+    "modules": [
+        "weapon:beam:small:monoemitter",
+        "weapon:beam:small:monoemitter",
+        "sensors:small:radar",
+        "shield:small:multilayer",
+        "reactor:small:fusion",
+        "engine:small:ion"
+    ]
 }

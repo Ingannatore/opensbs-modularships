@@ -14,9 +14,5 @@
         "mode": "None",
         "time": 1,
         "energy": -1000000
-    },
-    "storage": {
-        "type": "Energy",
-        "quantity": 350000000
     }
 }

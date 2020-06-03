@@ -1,6 +1,6 @@
 ﻿namespace ModularShips.Core.Models
 {
-    public enum HullSection
+    public enum HullSectionType
     {
         Front = 0,
         Center = 1,

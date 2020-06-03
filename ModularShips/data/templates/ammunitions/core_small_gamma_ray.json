@@ -7,7 +7,7 @@
     "size": "Small",
     "value": 100,
     "structure": {
-        "mass": 100,
+        "mass": 50,
         "hitpoints": 1
     },
     "damage": {

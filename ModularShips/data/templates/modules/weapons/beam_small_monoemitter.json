@@ -22,7 +22,7 @@
         },
         "magazine": {
             "size": 1,
-            "reload": 30
+            "reload": 20
         },
         "ammunition": {
             "type": "AmmunitionCore",
