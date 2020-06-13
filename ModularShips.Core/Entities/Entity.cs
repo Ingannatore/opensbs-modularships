@@ -11,18 +11,18 @@ namespace ModularShips.Core.Entities
     public class Entity : Thing
     {
         public string Name { get; }
-        public Vector3 Position { get; set; }
-        public Vector3 Direction { get; set; }
+        public Vector3 Position { get; private set; }
+        public Vector3 Direction { get; private set; }
         public Hull Hull { get; set; }
         public CapacitorModule Capacitor { get; set; }
-        public ICollection<Module> Modules { get; }
+        public ModuleCollection Modules { get; }
 
         public Entity(string name, Template template) : base(template)
         {
             Name = name;
             Position = Vector3.Zero;
             Direction = Vector3.UnitX;
-            Modules = new List<Module>();
+            Modules = new ModuleCollection();
         }
 
         public void Update(TimeSpan deltaT)
@@ -45,19 +45,6 @@ namespace ModularShips.Core.Entities
         {
             Direction = value;
             return this;
-        }
-
-        public T GetModule<T>(EntitySubcategory subcategory) where T : Module
-        {
-            return (T) Modules.FirstOrDefault(m => m.Template.Subcategory == subcategory);
-        }
-
-        public IEnumerable<T> GetModules<T>(EntitySubcategory subcategory) where T : Module
-        {
-            return Modules
-                .Where(m => m.Template.Subcategory == subcategory)
-                .Select(m => (T)m)
-                .ToList();
         }
     }
 }

@@ -14,7 +14,10 @@ namespace ModularShips.Core.Modules
         private bool MustAccelerate => Math.Sign(TargetSpeed - Speed) > 0;
         private bool MustDecelerate => Math.Sign(TargetSpeed - Speed) < 0;
 
-        public EngineModule(Template template) : base(template) { }
+        public EngineModule(Template template) : base(template)
+        {
+            Priority = 3;
+        }
 
         public override void Update(TimeSpan deltaT, Entity owner)
         {

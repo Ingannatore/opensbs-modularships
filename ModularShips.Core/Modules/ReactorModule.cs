@@ -4,6 +4,9 @@ namespace ModularShips.Core.Modules
 {
     public class ReactorModule : ActiveModule
     {
-        public ReactorModule(Template template) : base(template) { }
+        public ReactorModule(Template template) : base(template)
+        {
+            Priority = 1;
+        }
     }
 }

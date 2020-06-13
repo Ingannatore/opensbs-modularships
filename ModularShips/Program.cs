@@ -16,18 +16,18 @@ namespace ModularShips
             var factory = new EntityFactory(library);
 
             var viper = factory.Create("TEST", library.Get("ship:small:viper"));
-            var reactor = viper.GetModule<ReactorModule>(EntitySubcategory.ModuleReactor);
+            var reactor = viper.Modules.Get<ReactorModule>(EntitySubcategory.ModuleReactor);
             reactor.TurnOn();
 
-            var shields = viper.GetModule<ShieldModule>(EntitySubcategory.ModuleShield);
+            var shields = viper.Modules.Get<ShieldModule>(EntitySubcategory.ModuleShield);
             shields.TurnOn();
 
-            var engines = viper.GetModule<EngineModule>(EntitySubcategory.ModuleEngine);
+            var engines = viper.Modules.Get<EngineModule>(EntitySubcategory.ModuleEngine);
             engines.Rudder = 1;
             engines.Throttle = 50;
             engines.TurnOn();
 
-            var weapons = viper.GetModules<WeaponModule>(EntitySubcategory.ModuleWeapon).ToList();
+            var weapons = viper.Modules.GetAll<WeaponModule>(EntitySubcategory.ModuleWeapon).ToList();
 
             var deltaT = TimeSpan.FromSeconds(0.25);
             for (var i = 0; i < 80; i++)
