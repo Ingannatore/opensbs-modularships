@@ -10,7 +10,7 @@ namespace ModularShips.Core.Modules
 
         public override void Update(TimeSpan deltaT, Entity owner)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

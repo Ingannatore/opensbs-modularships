@@ -11,9 +11,9 @@
         "hitpoints": 40
     },
     "activation": {
-        "mode": "None",
+        "mode": "Multi",
         "time": 1,
-        "energy": 200000
+        "energy": -200000
     },
     "defense": {
         "layer": "Shields",

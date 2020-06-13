@@ -19,8 +19,8 @@ namespace ModularShips.Core
         {
             var entity = new Entity(name, template)
             {
-                Hull = new Hull(template.Structure),
-                Capacitor = new Capacity(template.GetEnergyStorage())
+                Hull = CreateHull(template),
+                Capacitor = CreateCapacitor(template)
             };
 
             foreach (var moduleId in template.Modules)
@@ -29,6 +29,16 @@ namespace ModularShips.Core
             }
 
             return entity;
+        }
+
+        private Hull CreateHull(Template template)
+        {
+            return template.Structure == null ? null : new Hull(template.Structure);
+        }
+
+        private CapacitorModule CreateCapacitor(Template template)
+        {
+            return new CapacitorModule(template.GetEnergyStorage());
         }
 
         private Module CreateModule(string moduleId)

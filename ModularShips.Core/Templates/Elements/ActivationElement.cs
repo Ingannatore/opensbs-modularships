@@ -7,5 +7,6 @@ namespace ModularShips.Core.Templates.Elements
         public ActivationMode Mode { get; set; }
         public int Time { get; set; }
         public int Energy { get; set; }
+        public int EnergyPerSecond => Energy / Time;
     }
 }

@@ -11,8 +11,8 @@
         "hitpoints": 40
     },
     "activation": {
-        "mode": "None",
+        "mode": "Multi",
         "time": 1,
-        "energy": -1000000
+        "energy": 1000000
     }
 }

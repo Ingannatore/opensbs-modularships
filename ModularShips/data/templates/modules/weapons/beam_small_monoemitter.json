@@ -11,9 +11,9 @@
         "hitpoints": 40
     },
     "activation": {
-        "mode": "Multi",
+        "mode": "Single",
         "time": 4,
-        "energy": 100000
+        "energy": -100000
     },
     "weapon": {
         "range": {

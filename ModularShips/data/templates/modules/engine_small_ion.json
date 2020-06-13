@@ -11,13 +11,14 @@
         "hitpoints": 80
     },
     "activation": {
-        "mode": "None",
+        "mode": "Multi",
         "time": 1,
-        "energy": 500000
+        "energy": -500000
     },
     "engine": {
-        "maxSpeed": 1600,
-        "acceleration": 80,
+        "maximumSpeed": 1000,
+        "acceleration": 100,
+        "deceleration": 100,
         "rotationSpeed": 10
     }
 }

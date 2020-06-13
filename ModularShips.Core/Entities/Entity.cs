@@ -12,29 +12,17 @@ namespace ModularShips.Core.Entities
     {
         public string Name { get; }
         public Vector3 Position { get; set; }
-        public Vector3 Rotation { get; set; }
+        public Vector3 Direction { get; set; }
         public Hull Hull { get; set; }
-        public Capacity Capacitor { get; set; }
+        public CapacitorModule Capacitor { get; set; }
         public ICollection<Module> Modules { get; }
 
         public Entity(string name, Template template) : base(template)
         {
             Name = name;
             Position = Vector3.Zero;
-            Rotation = Vector3.Zero;
+            Direction = Vector3.UnitX;
             Modules = new List<Module>();
-        }
-
-        public Entity MoveTo(float x, float y, float z)
-        {
-            Position = new Vector3(x, y, z);
-            return this;
-        }
-
-        public Entity RotateTo(float rx, float ry, float rz)
-        {
-            Rotation = new Vector3(rx, ry, rz);
-            return this;
         }
 
         public void Update(TimeSpan deltaT)
@@ -43,11 +31,33 @@ namespace ModularShips.Core.Entities
             {
                 module.Update(deltaT, this);
             }
+
+            Capacitor.Update(deltaT, this);
+        }
+
+        public Entity SetPosition(Vector3 value)
+        {
+            Position = value;
+            return this;
+        }
+
+        public Entity SetDirection(Vector3 value)
+        {
+            Direction = value;
+            return this;
         }
 
         public T GetModule<T>(EntitySubcategory subcategory) where T : Module
         {
             return (T) Modules.FirstOrDefault(m => m.Template.Subcategory == subcategory);
+        }
+
+        public IEnumerable<T> GetModules<T>(EntitySubcategory subcategory) where T : Module
+        {
+            return Modules
+                .Where(m => m.Template.Subcategory == subcategory)
+                .Select(m => (T)m)
+                .ToList();
         }
     }
 }

@@ -12,8 +12,8 @@ namespace ModularShips.Core.Modules
 
         public Hull(StructureElement structure)
         {
-            Mass = structure?.Mass ?? 0;
-            Hitpoints = new Capacity(structure?.Hitpoints ?? 0);
+            Mass = structure.Mass;
+            Hitpoints = new Capacity(structure.Hitpoints);
             Resists = new Dictionary<DamageType, float>
             {
                 {DamageType.Kinetic, 0},
