@@ -2,15 +2,15 @@
 using ModularShips.Core.Models;
 using ModularShips.Core.Templates.Elements;
 
-namespace ModularShips.Core.Modules
+namespace ModularShips.Core.Entities.Components
 {
-    public class Hull
+    public class HullComponent
     {
         public int Mass { get; }
         public Capacity Hitpoints { get; }
         public IDictionary<DamageType, float> Resists { get; }
 
-        public Hull(StructureElement structure)
+        public HullComponent(StructureElement structure)
         {
             Mass = structure.Mass;
             Hitpoints = new Capacity(structure.Hitpoints);

@@ -6,6 +6,7 @@
     "subcategory": "ModuleSensors",
     "size": "Small",
     "value": 15000,
+    "power": -0.1,
     "structure": {
         "mass": 1000,
         "hitpoints": 40

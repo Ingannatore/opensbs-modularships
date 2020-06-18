@@ -6,14 +6,10 @@
     "subcategory": "ModuleEngine",
     "size": "Small",
     "value": 15000,
+    "power": -0.4,
     "structure": {
         "mass": 500,
         "hitpoints": 80
-    },
-    "activation": {
-        "mode": "Multi",
-        "time": 1,
-        "energy": -500000
     },
     "engine": {
         "maximumSpeed": 1000,

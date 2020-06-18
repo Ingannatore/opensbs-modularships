@@ -4,7 +4,7 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class EngineModule : ActiveModule
+    public class EngineModule : Module
     {
         public int Throttle { get; set; }
         public int Rudder { get; set; }
@@ -13,23 +13,22 @@ namespace ModularShips.Core.Modules
 
         public EngineModule(Template template) : base(template)
         {
-            Priority = 3;
+            PowerPriority = 2;
         }
 
         public override void Update(TimeSpan deltaT, Entity owner)
         {
-            // base.Update(deltaT, owner);
-            if (!IsOn)
+            if (!IsActive)
             {
                 Rudder = 0;
                 Throttle = 0;
             }
 
-            RotateOwner(deltaT, owner);
+            RotateOwner(owner);
             MoveOwer(deltaT, owner);
         }
 
-        private void RotateOwner(TimeSpan deltaT, Entity owner)
+        private void RotateOwner(Entity owner)
         {
             if (RudderDirection == 0)
             {

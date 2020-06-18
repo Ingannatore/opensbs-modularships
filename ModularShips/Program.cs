@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Linq;
-using System.Numerics;
 using ModularShips.Core;
-using ModularShips.Core.Entities.Components;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;
@@ -16,22 +13,28 @@ namespace ModularShips
             const string folder = "./data/templates";
             var library = new TemplateLibrary(TemplateLoader.Load(folder));
             var factory = new EntityFactory(library);
-
             var viper = factory.Create("TEST", library.Get("ship:small:viper"));
-            var reactor = viper.Modules.Get<ReactorModule>(EntitySubcategory.ModuleReactor);
-            reactor.TurnOn();
-
-            var engines = viper.Modules.Get<EngineModule>(EntitySubcategory.ModuleEngine);
-            engines.Rudder = 1;
-            engines.Throttle = 50;
-            engines.TurnOn();
 
             var deltaT = TimeSpan.FromSeconds(0.25);
+
+            var powerplant = viper.Modules.Get<PowerplantModule>(EntitySubcategory.ModulePowerplant);
+            powerplant.TurnOn(viper);
+
+            viper.Update(deltaT);
+
+            var engines = viper.Modules.Get<EngineModule>(EntitySubcategory.ModuleEngine);
+            engines.TurnOn(viper);
+            engines.Rudder = 1;
+            engines.Throttle = 50;
+
+            viper.Update(deltaT);
+
             for (var i = 0; i < 80; i++)
             {
                 switch (i)
                 {
                     case 20:
+                        viper.Modules.Get<ShieldModule>(EntitySubcategory.ModuleShield).TurnOn(viper);
                         engines.Rudder = 0;
                         break;
                     case 40:
@@ -43,16 +46,17 @@ namespace ModularShips
                 }
 
                 viper.Update(deltaT);
-                Console.WriteLine(
-                    FormattableString.Invariant(
-                        $"<text x=\"{viper.Body.Position.X + 8}\" y=\"{viper.Body.Position.Z * -1 + 8}\" fill=\"#999999\" font-size=\"16\">{viper.Body.LinearSpeed} ({i})</text>"
-                    )
-                );
-                Console.WriteLine(
-                    FormattableString.Invariant(
-                        $"<circle cx=\"{viper.Body.Position.X}\" cy=\"{viper.Body.Position.Z * -1}\" r=\"4\" fill=\"red\"/>"
-                    )
-                );
+                Console.WriteLine(viper.Power);
+                // Console.WriteLine(
+                //     FormattableString.Invariant(
+                //         $"<text x=\"{viper.Body.Position.X + 8}\" y=\"{viper.Body.Position.Z * -1 + 8}\" fill=\"#999999\" font-size=\"16\">{viper.Body.LinearSpeed} ({i})</text>"
+                //     )
+                // );
+                // Console.WriteLine(
+                //     FormattableString.Invariant(
+                //         $"<circle cx=\"{viper.Body.Position.X}\" cy=\"{viper.Body.Position.Z * -1}\" r=\"4\" fill=\"red\"/>"
+                //     )
+                // );
             }
         }
     }

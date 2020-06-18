@@ -36,7 +36,7 @@
         ModuleEngine = 27,
         ModuleHardpoint = 28,
         ModuleFtl = 29,
-        ModuleReactor = 30,
+        ModulePowerplant = 30,
         ModuleSensors = 31,
         ModuleShield = 32,
         ModuleUtility = 33,

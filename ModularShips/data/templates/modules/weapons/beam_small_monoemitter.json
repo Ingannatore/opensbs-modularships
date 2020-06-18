@@ -10,11 +10,7 @@
         "mass": 1500,
         "hitpoints": 40
     },
-    "activation": {
-        "mode": "Single",
-        "time": 4,
-        "energy": -100000
-    },
+    "power": -0.1,
     "weapon": {
         "range": {
             "optimal": 1000,
@@ -26,6 +22,7 @@
         },
         "ammunition": {
             "type": "AmmunitionCore",
+            "reload": 4,
             "consumed": 0
         }
     }

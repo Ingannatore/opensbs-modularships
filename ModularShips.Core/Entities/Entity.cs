@@ -10,27 +10,23 @@ namespace ModularShips.Core.Entities
     {
         public string Name { get; }
         public BodyComponent Body { get; }
-        public Hull Hull { get; set; }
-        public CapacitorModule Capacitor { get; set; }
+        public HullComponent HullComponent { get; set; }
+        public PowerComponent Power { get; }
         public ModuleCollection Modules { get; }
 
         public Entity(string name, Template template) : base(template)
         {
             Name = name;
-            Body = new BodyComponent(Vector3.Zero,Vector3.UnitX);
+            Body = new BodyComponent(Vector3.Zero, Vector3.UnitX);
+            Power = new PowerComponent();
             Modules = new ModuleCollection();
         }
 
         public void Update(TimeSpan deltaT)
         {
+            Power.Update(deltaT, this);
+            Modules.Update(deltaT, this);
             Body.Update(deltaT, this);
-
-            foreach (var module in Modules)
-            {
-                module.Update(deltaT, this);
-            }
-
-            // Capacitor.Update(deltaT, this);
         }
     }
 }

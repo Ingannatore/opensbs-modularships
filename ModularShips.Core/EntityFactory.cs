@@ -1,5 +1,6 @@
 ﻿using System;
 using ModularShips.Core.Entities;
+using ModularShips.Core.Entities.Components;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;
@@ -19,8 +20,7 @@ namespace ModularShips.Core
         {
             var entity = new Entity(name, template)
             {
-                Hull = CreateHull(template),
-                Capacitor = CreateCapacitor(template)
+                HullComponent = CreateHull(template),
             };
 
             foreach (var moduleId in template.Modules)
@@ -31,14 +31,9 @@ namespace ModularShips.Core
             return entity;
         }
 
-        private Hull CreateHull(Template template)
+        private HullComponent CreateHull(Template template)
         {
-            return template.Structure == null ? null : new Hull(template.Structure);
-        }
-
-        private CapacitorModule CreateCapacitor(Template template)
-        {
-            return new CapacitorModule(template.GetEnergyStorage());
+            return template.Structure == null ? null : new HullComponent(template.Structure);
         }
 
         private Module CreateModule(string moduleId)
@@ -48,8 +43,8 @@ namespace ModularShips.Core
             {
                 case EntitySubcategory.ModuleEngine:
                     return new EngineModule(template);
-                case EntitySubcategory.ModuleReactor:
-                    return new ReactorModule(template);
+                case EntitySubcategory.ModulePowerplant:
+                    return new PowerplantModule(template);
                 case EntitySubcategory.ModuleSensors:
                     return new SensorsModule(template);
                 case EntitySubcategory.ModuleShield:

@@ -8,7 +8,7 @@ namespace ModularShips.Core.Modules
     {
         public SensorsModule(Template template) : base(template)
         {
-            Priority = 2;
+            PowerPriority = 1;
         }
 
         public override void Update(TimeSpan deltaT, Entity owner)

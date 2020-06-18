@@ -4,11 +4,11 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class ShieldModule : Module
+    public class PowerplantModule : Module
     {
-        public ShieldModule(Template template) : base(template)
+        public PowerplantModule(Template template) : base(template)
         {
-            PowerPriority = 3;
+            PowerPriority = 0;
         }
 
         public override void Update(TimeSpan deltaT, Entity owner) { }

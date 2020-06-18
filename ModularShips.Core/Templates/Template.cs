@@ -14,9 +14,9 @@ namespace ModularShips.Core.Templates
         public EntitySubcategory Subcategory { get; set; }
         public EntitySize Size { get; set; }
         public decimal Value { get; set; }
+        public double Power { get; set; }
 
         public StructureElement Structure { get; set; }
-        public ActivationElement Activation { get; set; }
         public DamageElement Damage { get; set; }
 
         public EngineElement Engine { get; set; }

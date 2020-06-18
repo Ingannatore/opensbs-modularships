@@ -6,14 +6,10 @@
     "subcategory": "ModuleShield",
     "size": "Small",
     "value": 25000,
+    "power": -0.2,
     "structure": {
         "mass": 500,
         "hitpoints": 40
-    },
-    "activation": {
-        "mode": "Multi",
-        "time": 1,
-        "energy": -200000
     },
     "defense": {
         "layer": "Shields",

@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ModularShips.Core.Models;
+using ModularShips.Core.Modules;
 
-namespace ModularShips.Core.Modules
+namespace ModularShips.Core.Entities.Components
 {
-    public class ModuleCollection : IEnumerable<Module>
+    public class ModuleCollection : IEnumerable<Module>, IUpdatable
     {
         private readonly SortedSet<Module> _modules;
 
@@ -40,6 +42,14 @@ namespace ModularShips.Core.Modules
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public void Update(TimeSpan deltaT, Entity owner)
+        {
+            foreach (var module in _modules)
+            {
+                module.Update(deltaT, owner);
+            }
         }
     }
 }

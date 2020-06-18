@@ -7,7 +7,8 @@ namespace ModularShips.Core.Modules
 {
     public abstract class Module : Thing, IComparable<Module>, IUpdatable
     {
-        public int Priority { get; protected set; }
+        public bool IsActive { get; private set; }
+        public int PowerPriority { get; protected set; }
         public Capacity Hitpoints { get; }
 
         protected Module(Template template) : base(template)
@@ -15,7 +16,15 @@ namespace ModularShips.Core.Modules
             Hitpoints = new Capacity(template.Structure.Hitpoints);
         }
 
-        public abstract void Update(TimeSpan deltaT, Entity owner);
+        public void TurnOn(Entity owner)
+        {
+            IsActive = owner.Power.HasBalance(Template.Power);
+        }
+
+        public void TurnOff()
+        {
+            IsActive = false;
+        }
 
         public int CompareTo(Module other)
         {
@@ -29,7 +38,9 @@ namespace ModularShips.Core.Modules
                 return 1;
             }
 
-            return Priority.CompareTo(other.Priority);
+            return PowerPriority.CompareTo(other.PowerPriority);
         }
+
+        public abstract void Update(TimeSpan deltaT, Entity owner);
     }
 }

@@ -1,12 +1,16 @@
-﻿using ModularShips.Core.Templates;
+﻿using System;
+using ModularShips.Core.Entities;
+using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class WeaponModule : ActiveModule
+    public class WeaponModule : Module
     {
         public WeaponModule(Template template) : base(template)
         {
-            Priority = 5;
+            PowerPriority = 4;
         }
+
+        public override void Update(TimeSpan deltaT, Entity owner) { }
     }
 }
