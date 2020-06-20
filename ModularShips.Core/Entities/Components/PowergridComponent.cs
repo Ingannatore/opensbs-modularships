@@ -1,8 +1,9 @@
 ﻿using System;
+using ModularShips.Core.Entities.Interfaces;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class PowerComponent : IUpdatable
+    public class PowergridComponent : IUpdatable
     {
         public double Generated { get; protected set; }
         public double Used { get; protected set; }
@@ -46,10 +47,7 @@ namespace ModularShips.Core.Entities.Components
                     continue;
                 }
 
-                if (module.IsActive)
-                {
-                    module.TurnOff();
-                }
+                module.TurnOff();
             }
         }
 

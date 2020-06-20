@@ -2,8 +2,8 @@
 {
     public class DamageElement
     {
-        public int Kinetic { get; set; }
-        public int Thermal { get; set; }
-        public int Em { get; set; }
+        public float Kinetic { get; set; }
+        public float Thermal { get; set; }
+        public float Em { get; set; }
     }
 }

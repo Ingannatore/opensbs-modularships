@@ -7,20 +7,15 @@
     "size": "Small",
     "value": 5000,
     "structure": {
-        "mass": 10000,
+        "mass": 5000,
         "hitpoints": 80
     },
     "defense": {
-        "layer": "Armor",
+        "hitpoints": 80,
         "resists": {
             "kinetic": 0.5,
             "thermal": 0.2,
             "em": 0.1
-        },
-        "values": {
-            "front": 80,
-            "center": 80,
-            "rear": 80
         }
     }
 }

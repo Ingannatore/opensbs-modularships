@@ -1,5 +1,6 @@
 ﻿using System;
 using ModularShips.Core.Entities;
+using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
 using ModularShips.Core.Templates;
 
@@ -9,16 +10,16 @@ namespace ModularShips.Core.Modules
     {
         public bool IsActive { get; private set; }
         public int PowerPriority { get; protected set; }
-        public Capacity Hitpoints { get; }
+        public BoundedValue Hitpoints { get; }
 
         protected Module(Template template) : base(template)
         {
-            Hitpoints = new Capacity(template.Structure.Hitpoints);
+            Hitpoints = new BoundedValue(template.Structure.Hitpoints);
         }
 
         public void TurnOn(Entity owner)
         {
-            IsActive = owner.Power.HasBalance(Template.Power);
+            IsActive = owner.Powergrid.HasBalance(Template.Power);
         }
 
         public void TurnOff()

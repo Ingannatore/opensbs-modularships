@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Numerics;
+using ModularShips.Core.Entities.Interfaces;
 
 namespace ModularShips.Core.Entities.Components
 {
     public class BodyComponent : IUpdatable
     {
+        public int Mass { get; }
         public Vector3 Position { get; private set; }
         public Vector3 Direction { get; private set; }
         public double LinearSpeed { get; set; }
         public double AngularSpeed { get; set; }
 
-        public BodyComponent(Vector3 position, Vector3 direction)
+        public BodyComponent(int mass, Vector3 position, Vector3 direction)
         {
+            Mass = mass;
             Position = position;
             Direction = direction;
         }

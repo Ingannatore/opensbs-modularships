@@ -1,5 +1,6 @@
 ﻿using System;
 using ModularShips.Core;
+using ModularShips.Core.Entities;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;
@@ -33,11 +34,15 @@ namespace ModularShips
             {
                 switch (i)
                 {
+                    case 10:
+                        viper.ApplyDamage(new Damage(DamageType.Kinetic, 50));
+                        break;
                     case 20:
                         viper.Modules.Get<ShieldModule>(EntitySubcategory.ModuleShield).TurnOn(viper);
                         engines.Rudder = 0;
                         break;
                     case 40:
+                        viper.ApplyDamage(new Damage(DamageType.Kinetic, 50));
                         engines.Rudder = -1;
                         break;
                     case 60:
@@ -46,7 +51,11 @@ namespace ModularShips
                 }
 
                 viper.Update(deltaT);
-                Console.WriteLine(viper.Power);
+                Console.WriteLine($"UPDATE {i}");
+                Console.WriteLine(viper.Modules.GetShieldModule());
+                Console.WriteLine(viper.Hull);
+                Console.WriteLine();
+                // Console.WriteLine(viper.Powergrid);
                 // Console.WriteLine(
                 //     FormattableString.Invariant(
                 //         $"<text x=\"{viper.Body.Position.X + 8}\" y=\"{viper.Body.Position.Z * -1 + 8}\" fill=\"#999999\" font-size=\"16\">{viper.Body.LinearSpeed} ({i})</text>"

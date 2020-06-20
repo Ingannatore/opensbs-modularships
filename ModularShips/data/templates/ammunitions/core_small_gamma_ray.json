@@ -13,6 +13,6 @@
     "damage": {
         "kinetic": 0,
         "thermal": 10,
-        "em": 2
+        "em": 0
     }
 }

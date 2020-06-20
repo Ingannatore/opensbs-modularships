@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
 
@@ -10,6 +11,8 @@ namespace ModularShips.Core.Entities.Components
     public class ModuleCollection : IEnumerable<Module>, IUpdatable
     {
         private readonly SortedSet<Module> _modules;
+        private ShieldModule _shield;
+        private ArmorModule _armor;
 
         public ModuleCollection()
         {
@@ -19,6 +22,26 @@ namespace ModularShips.Core.Entities.Components
         public void Add(Module module)
         {
             _modules.Add(module);
+
+            switch (module.Template.Subcategory)
+            {
+                case EntitySubcategory.ModuleShield:
+                    _shield = (ShieldModule) module;
+                    break;
+                case EntitySubcategory.ModuleArmor:
+                    _armor = (ArmorModule) module;
+                    break;
+            }
+        }
+
+        public ShieldModule GetShieldModule()
+        {
+            return _shield;
+        }
+
+        public ArmorModule GetArmorModule()
+        {
+            return _armor;
         }
 
         public T Get<T>(EntitySubcategory subcategory) where T : Module
@@ -30,7 +53,7 @@ namespace ModularShips.Core.Entities.Components
         {
             return _modules
                 .Where(m => m.Template.Subcategory == subcategory)
-                .Select(m => (T)m)
+                .Select(m => (T) m)
                 .ToList();
         }
 

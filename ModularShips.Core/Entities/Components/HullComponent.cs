@@ -1,25 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
-using ModularShips.Core.Templates.Elements;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class HullComponent
+    public class HullComponent : IDamageable
     {
-        public int Mass { get; }
-        public Capacity Hitpoints { get; }
-        public IDictionary<DamageType, float> Resists { get; }
+        public BoundedValue Hitpoints { get; protected set; }
+        public bool IsDestroyed => Hitpoints.Current <= 0;
 
-        public HullComponent(StructureElement structure)
+        public HullComponent(int hitpoints)
         {
-            Mass = structure.Mass;
-            Hitpoints = new Capacity(structure.Hitpoints);
-            Resists = new Dictionary<DamageType, float>
-            {
-                {DamageType.Kinetic, 0},
-                {DamageType.Thermal, 0},
-                {DamageType.Electromagnetic, 0}
-            };
+            Hitpoints = new BoundedValue(hitpoints);
+        }
+
+        public Damage ApplyDamage(Damage damage)
+        {
+            Hitpoints -= damage.Amount;
+            return null;
+        }
+
+        public override string ToString()
+        {
+            return Hitpoints.ToString();
         }
     }
 }

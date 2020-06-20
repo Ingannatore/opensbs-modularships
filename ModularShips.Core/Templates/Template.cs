@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ModularShips.Core.Entities;
 using ModularShips.Core.Models;
 using ModularShips.Core.Templates.Elements;
 

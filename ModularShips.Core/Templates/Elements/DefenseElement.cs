@@ -1,12 +1,8 @@
-﻿using ModularShips.Core.Models;
-
-namespace ModularShips.Core.Templates.Elements
+﻿namespace ModularShips.Core.Templates.Elements
 {
     public class DefenseElement
     {
-        public DefenseLayer Layer { get; set; }
-        public DamageResistsElement Resists { get; set; }
-        public DefenseValuesElement Values { get; set; }
-        public int Regeneration { get; set; }
+        public int Hitpoints { get; set; }
+        public DamageElement Resists { get; set; }
     }
 }

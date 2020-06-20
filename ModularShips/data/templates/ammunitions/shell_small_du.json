@@ -11,8 +11,8 @@
         "hitpoints": 1
     },
     "damage": {
-        "kinetic": 8,
-        "thermal": 4,
+        "kinetic": 10,
+        "thermal": 0,
         "em": 0
     }
 }

@@ -7,7 +7,7 @@
     "size": "Small",
     "value": 1000000,
     "structure": {
-        "mass": 300000,
+        "mass": 30000,
         "hitpoints": 500
     },
     "storage": [

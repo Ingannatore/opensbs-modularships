@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModularShips.Core.Entities
+namespace ModularShips.Core.Entities.Interfaces
 {
     public interface IUpdatable
     {
