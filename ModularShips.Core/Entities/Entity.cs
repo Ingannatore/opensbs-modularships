@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Numerics;
 using ModularShips.Core.Entities.Components;
+using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Entities
 {
-    public class Entity : Thing
+    public class Entity : Thing, IDamageable
     {
         public string Name { get; }
         public BodyComponent Body { get; }
@@ -22,9 +23,9 @@ namespace ModularShips.Core.Entities
             Modules = new ModuleCollection();
         }
 
-        public void ApplyDamage(Damage damage)
+        public Damage ApplyDamage(Damage damage)
         {
-            Hull.EnqueueDamage(damage);
+            return Hull.ApplyDamage(damage);
         }
 
         public void Update(TimeSpan deltaT)

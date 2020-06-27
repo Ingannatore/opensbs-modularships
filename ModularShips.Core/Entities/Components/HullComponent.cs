@@ -5,7 +5,7 @@ using ModularShips.Core.Models;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class HullComponent : IUpdatable
+    public class HullComponent : IUpdatable, IDamageable
     {
         public BoundedValue Hitpoints { get; protected set; }
         public bool IsDestroyed { get; protected set; }
@@ -18,9 +18,10 @@ namespace ModularShips.Core.Entities.Components
             _damages = new Queue<Damage>();
         }
 
-        public void EnqueueDamage(Damage damage)
+        public Damage ApplyDamage(Damage damage)
         {
             _damages.Enqueue(damage);
+            return null;
         }
 
         public void Update(TimeSpan deltaT, Entity owner)
