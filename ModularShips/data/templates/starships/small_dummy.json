@@ -1,0 +1,11 @@
+﻿{
+    "id": "ship:small:dummy",
+    "name": "Small Dummy target",
+    "description": "A small dummy target used for training",
+    "category": 8,
+    "subcategory": 45,
+    "size": "Small",
+    "mass": 1000,
+    "hitpoints": 100,
+    "value": 100
+}

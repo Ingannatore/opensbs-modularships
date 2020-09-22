@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ModularShips.Core.Entities;
-using ModularShips.Core.Models;
-using ModularShips.Core.Templates.Elements;
+﻿using ModularShips.Core.Models;
 
 namespace ModularShips.Core.Templates
 {
@@ -14,31 +10,17 @@ namespace ModularShips.Core.Templates
         public EntityCategory Category { get; set; }
         public EntitySubcategory Subcategory { get; set; }
         public EntitySize Size { get; set; }
-        public decimal Value { get; set; }
-        public double Power { get; set; }
+        public int Mass { get; set; }
+        public int Hitpoints { get; set; }
+        public int Value { get; set; }
 
-        public StructureElement Structure { get; set; }
-        public DamageElement Damage { get; set; }
-
-        public EngineElement Engine { get; set; }
-        public SensorsElement Sensors { get; set; }
-        public WeaponElement Weapon { get; set; }
-        public DefenseElement Defense { get; set; }
-
-        public IEnumerable<StorageElement> Storage { get; set; }
-        public IEnumerable<string> Modules { get; set; }
-
-        public Template()
-        {
-            Storage = new List<StorageElement>();
-            Modules = new List<string>();
-        }
-
-        public int GetEnergyStorage()
-        {
-            return Storage
-                .Where(s => s.Type == StorageType.Energy)
-                .Sum(s => s.Quantity);
-        }
+        public AmmunitionTemplate Ammunition { get; set; }
+        public ArmorTemplate Armor { get; set; }
+        public ShieldTemplate Shield { get; set; }
+        public WeaponTemplate Weapon { get; set; }
+        public EngineTemplate Engine { get; set; }
+        public PowerplantTemplate Powerplant { get; set; }
+        public SensorsTemplate Sensors { get; set; }
+        public StarshipTemplate Starship { get; set; }
     }
 }

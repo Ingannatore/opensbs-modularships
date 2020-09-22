@@ -1,59 +1,19 @@
-﻿using System;
-using ModularShips.Core.Entities.Interfaces;
+﻿using ModularShips.Core.Modules;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class PowergridComponent : IUpdatable
+    public class PowergridComponent
     {
-        public double Generated { get; protected set; }
-        public double Used { get; protected set; }
-        public double Balance { get; protected set; }
+        private PowerplantModule _powerplant;
 
-        public bool HasBalance(double value)
+        public void SetPowerplant(PowerplantModule powerplant)
         {
-            if (value > 0)
-            {
-                return true;
-            }
-
-            return Balance >= Math.Abs(value);
+            _powerplant = powerplant;
         }
 
-        public void Update(TimeSpan deltaT, Entity owner)
+        public bool TryConsumeEnergy(int value)
         {
-            Generated = 0;
-            Used = 0;
-            Balance = 0;
-
-            foreach (var module in owner.Modules)
-            {
-                if (!module.IsActive)
-                {
-                    continue;
-                }
-
-                var modulePower = module.Template.Power;
-                if (modulePower >= 0)
-                {
-                    Generated += modulePower;
-                    Balance += modulePower;
-                    continue;
-                }
-
-                if (Balance >= Math.Abs(modulePower))
-                {
-                    Used += Math.Abs(modulePower);
-                    Balance += modulePower;
-                    continue;
-                }
-
-                module.TurnOff();
-            }
-        }
-
-        public override string ToString()
-        {
-            return FormattableString.Invariant($"{Used:0.000}/{Generated:0.000} ({Balance:+0.000})");
+            return _powerplant.TryConsumeEnergy(value);
         }
     }
 }

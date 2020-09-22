@@ -13,14 +13,14 @@ namespace ModularShips.Core.Templates
             options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
             var templates = Directory.GetFiles(path, "*.json", SearchOption.AllDirectories);
 
-            var result = new List<Template>();
+            var results = new List<Template>();
             foreach (var templatePath in templates)
             {
                 var jsonString = File.ReadAllText(templatePath);
-                result.Add(JsonSerializer.Deserialize<Template>(jsonString, options));
+                results.Add(JsonSerializer.Deserialize<Template>(jsonString, options));
             }
 
-            return result;
+            return results;
         }
     }
 }

@@ -2,54 +2,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class ModuleCollection : IEnumerable<Module>, IUpdatable
+    public class ModuleCollection : IEnumerable<StarshipModule>
     {
-        private readonly SortedSet<Module> _modules;
-        private ShieldModule _shield;
-        private ArmorModule _armor;
+        private readonly SortedSet<StarshipModule> _modules;
 
         public ModuleCollection()
         {
-            _modules = new SortedSet<Module>();
+            _modules = new SortedSet<StarshipModule>();
         }
 
-        public void Add(Module module)
+        public void Add(StarshipModule module, Entity owner)
         {
             _modules.Add(module);
-
-            switch (module.Template.Subcategory)
-            {
-                case EntitySubcategory.ModuleShield:
-                    _shield = (ShieldModule) module;
-                    break;
-                case EntitySubcategory.ModuleArmor:
-                    _armor = (ArmorModule) module;
-                    break;
-            }
+            module.OnInstall(owner);
         }
 
-        public ShieldModule GetShieldModule()
-        {
-            return _shield;
-        }
-
-        public ArmorModule GetArmorModule()
-        {
-            return _armor;
-        }
-
-        public T Get<T>(EntitySubcategory subcategory) where T : Module
+        public T Get<T>(EntitySubcategory subcategory) where T : StarshipModule
         {
             return (T) _modules.FirstOrDefault(m => m.Template.Subcategory == subcategory);
         }
 
-        public IEnumerable<T> GetAll<T>(EntitySubcategory subcategory) where T : Module
+        public IEnumerable<T> GetAll<T>(EntitySubcategory subcategory) where T : StarshipModule
         {
             return _modules
                 .Where(m => m.Template.Subcategory == subcategory)
@@ -57,7 +35,7 @@ namespace ModularShips.Core.Entities.Components
                 .ToList();
         }
 
-        public IEnumerator<Module> GetEnumerator()
+        public IEnumerator<StarshipModule> GetEnumerator()
         {
             return _modules.GetEnumerator();
         }

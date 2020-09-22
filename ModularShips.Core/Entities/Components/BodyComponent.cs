@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Numerics;
-using ModularShips.Core.Entities.Interfaces;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class BodyComponent : IUpdatable
+    public class BodyComponent
     {
         public int Mass { get; }
         public Vector3 Position { get; private set; }
@@ -19,7 +18,7 @@ namespace ModularShips.Core.Entities.Components
             Direction = direction;
         }
 
-        public void Update(TimeSpan deltaT, Entity owner)
+        public void Update(TimeSpan deltaT)
         {
             RotateBody(deltaT);
             MoveBody(deltaT);

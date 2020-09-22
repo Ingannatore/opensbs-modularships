@@ -25,7 +25,7 @@ namespace ModularShips.Core.Entities
         {
             return new Damage(
                 damage.Type,
-                (int) Math.Round(damage.Amount * (1 - _values[DamageType.Thermal]))
+                (int) Math.Round(damage.Amount * (1 - _values[damage.Type]))
             );
         }
 

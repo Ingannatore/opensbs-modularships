@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Numerics;
 using ModularShips.Core.Entities.Components;
-using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Entities
 {
-    public class Entity : Thing, IDamageable
+    public class Entity : Thing
     {
         public string Name { get; }
         public BodyComponent Body { get; }
@@ -17,23 +16,15 @@ namespace ModularShips.Core.Entities
         public Entity(string name, Template template) : base(template)
         {
             Name = name;
-            Body = new BodyComponent(template.Structure.Mass, Vector3.Zero, Vector3.UnitX);
-            Hull = new HullComponent(template.Structure.Hitpoints);
+            Body = new BodyComponent(template.Mass, Vector3.Zero, Vector3.UnitX);
+            Hull = new HullComponent(template.Hitpoints);
             Powergrid = new PowergridComponent();
             Modules = new ModuleCollection();
         }
 
-        public Damage ApplyDamage(Damage damage)
-        {
-            return Hull.ApplyDamage(damage);
-        }
-
         public void Update(TimeSpan deltaT)
         {
-            Hull.Update(deltaT, this);
-            Powergrid.Update(deltaT, this);
-            Modules.Update(deltaT, this);
-            Body.Update(deltaT, this);
+            Body.Update(deltaT);
         }
     }
 }

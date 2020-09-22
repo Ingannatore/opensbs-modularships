@@ -18,32 +18,27 @@ namespace ModularShips.Core
         public Entity Create(string name, Template template)
         {
             var entity = new Entity(name, template);
-            foreach (var moduleId in template.Modules)
+            foreach (var slot in template.Starship.Slots)
             {
-                entity.Modules.Add(CreateModule(moduleId));
+                entity.Modules.Add(CreateModule(slot.ModuleId), entity);
             }
 
             return entity;
         }
 
-        private Module CreateModule(string moduleId)
+        private StarshipModule CreateModule(string moduleId)
         {
             var template = _templateLibrary.Get(moduleId);
-            switch (template.Subcategory)
+            return template.Subcategory switch
             {
-                case EntitySubcategory.ModuleEngine:
-                    return new EngineModule(template);
-                case EntitySubcategory.ModulePowerplant:
-                    return new PowerplantModule(template);
-                case EntitySubcategory.ModuleSensors:
-                    return new SensorsModule(template);
-                case EntitySubcategory.ModuleShield:
-                    return new ShieldModule(template);
-                case EntitySubcategory.ModuleWeapon:
-                    return new WeaponModule(template);
-                default:
-                    throw new Exception($"Unknown module subcategory: {template.Subcategory}");
-            }
+                EntitySubcategory.ModuleArmor => new ArmorModule(template),
+                EntitySubcategory.ModuleEngine => new EngineModule(template),
+                EntitySubcategory.ModulePowerplant => new PowerplantModule(template),
+                EntitySubcategory.ModuleSensors => new SensorsModule(template),
+                EntitySubcategory.ModuleShield => new ShieldModule(template),
+                EntitySubcategory.ModuleWeapon => new WeaponModule(template),
+                _ => throw new Exception($"Unknown module subcategory: {template.Subcategory}")
+            };
         }
     }
 }

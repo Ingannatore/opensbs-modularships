@@ -5,14 +5,13 @@
     "category": "Module",
     "subcategory": "ModuleShield",
     "size": "Small",
+    "mass": 500,
+    "hitpoints": 40,
     "value": 25000,
-    "power": -0.2,
-    "structure": {
-        "mass": 500,
-        "hitpoints": 40
-    },
-    "defense": {
-        "hitpoints": 100,
+    "shield": {
+        "power": -200000,
+        "capacity": 100,
+        "regeneration":10,
         "resists": {
             "kinetic": 0.5,
             "thermal": 0.2,

@@ -1,58 +1,68 @@
 ﻿using System;
 using ModularShips.Core.Entities;
+using ModularShips.Core.Messages;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class EngineModule : Module
+    public class EngineModule : StarshipModule
     {
         public int Throttle { get; set; }
         public int Rudder { get; set; }
-        private int RudderDirection => Math.Sign(Rudder);
-        private double TargetSpeed => Template.Engine.MaximumSpeed * (Throttle / 100.0);
+        public double LinearSpeed { get; set; }
+        public double AngularSpeed { get; set; }
+        public int RudderDirection => Math.Sign(Rudder);
+        public double TargetSpeed => Template.Engine.MaximumSpeed * (Throttle / 100.0);
 
         public EngineModule(Template template) : base(template)
         {
             PowerPriority = 2;
         }
 
+        public override void OnInstall(Entity owner) { }
+        public override void OnUninstall(Entity owner) { }
+        public override void HandleMessage(Message message) { }
+
         public override void Update(TimeSpan deltaT, Entity owner)
         {
-            if (!IsActive)
-            {
-                Rudder = 0;
-                Throttle = 0;
-            }
+            AngularSpeed = CalculateAngularSpeed(deltaT);
+            LinearSpeed = CalculateLinearSpeed(deltaT);
 
-            RotateOwner(owner);
-            MoveOwer(deltaT, owner);
+            owner.Body.AngularSpeed = AngularSpeed;
+            owner.Body.LinearSpeed = LinearSpeed;
         }
 
-        private void RotateOwner(Entity owner)
+        public override string ToString()
+        {
+            return FormattableString.Invariant($"T{Throttle}, R{Rudder}");
+        }
+
+        private double CalculateAngularSpeed(TimeSpan deltaT)
         {
             if (RudderDirection == 0)
             {
-                owner.Body.AngularSpeed = 0;
+                return 0;
             }
-            else
-            {
-                owner.Body.AngularSpeed = RudderDirection * Template.Engine.RotationSpeed * (Math.PI / 180);
-            }
+
+            return RudderDirection * Template.Engine.RotationSpeed * deltaT.TotalSeconds * (Math.PI / 180);
         }
 
-        private void MoveOwer(TimeSpan deltaT, Entity owner)
+        private double CalculateLinearSpeed(TimeSpan deltaT)
         {
-            var linearSpeedDirection = Math.Sign(TargetSpeed - owner.Body.LinearSpeed);
+            var linearSpeedDirection = Math.Sign(TargetSpeed - LinearSpeed);
             if (linearSpeedDirection < 0)
             {
                 var deltaSpeed = Template.Engine.Deceleration * deltaT.TotalSeconds;
-                owner.Body.LinearSpeed = Math.Max(owner.Body.LinearSpeed - deltaSpeed, -Template.Engine.MaximumSpeed);
+                return Math.Max(LinearSpeed - deltaSpeed, -Template.Engine.MaximumSpeed);
             }
-            else if (linearSpeedDirection > 0)
+
+            if (linearSpeedDirection > 0)
             {
                 var deltaSpeed = Template.Engine.Acceleration * deltaT.TotalSeconds;
-                owner.Body.LinearSpeed = Math.Min(owner.Body.LinearSpeed + deltaSpeed, Template.Engine.MaximumSpeed);
+                return Math.Min(LinearSpeed + deltaSpeed, Template.Engine.MaximumSpeed);
             }
+
+            return LinearSpeed;
         }
     }
 }

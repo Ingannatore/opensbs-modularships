@@ -5,17 +5,14 @@
     "category": "Module",
     "subcategory": "ModuleArmor",
     "size": "Small",
+    "mass": 5000,
+    "hitpoints": 80,
     "value": 5000,
-    "structure": {
-        "mass": 5000,
-        "hitpoints": 80
-    },
-    "defense": {
-        "hitpoints": 80,
+    "armor": {
         "resists": {
-            "kinetic": 0.5,
-            "thermal": 0.2,
-            "em": 0.1
+            "kinetic": 0.2,
+            "thermal": 0.3,
+            "em": 0.5
         }
     }
 }

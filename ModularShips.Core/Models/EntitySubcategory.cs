@@ -51,6 +51,7 @@
         StarshipFrigate = 41,
         StarshipHeavyCruiser = 42,
         StarshipInterceptor = 43,
-        StarshipStation = 44
+        StarshipStation = 44,
+        StarshipDummy = 45
     }
 }

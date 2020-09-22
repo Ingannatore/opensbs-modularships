@@ -5,25 +5,23 @@
     "category": "Module",
     "subcategory": "ModuleWeapon",
     "size": "Small",
+    "mass": 1500,
+    "hitpoints": 40,
     "value": 8000,
-    "structure": {
-        "mass": 1500,
-        "hitpoints": 40
-    },
-    "power": -0.1,
     "weapon": {
-        "range": {
-            "optimal": 1000,
-            "maximum": 2000
+        "power": -100000,
+        "ammunition" : {
+            "type": "AmmunitionCore",
+            "reload": 4,
+            "consumed": 0
         },
         "magazine": {
             "size": 1,
             "reload": 20
         },
-        "ammunition": {
-            "type": "AmmunitionCore",
-            "reload": 4,
-            "consumed": 0
+        "range": {
+            "optimal": 1000,
+            "maximum": 2000
         }
     }
 }

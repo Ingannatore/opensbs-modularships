@@ -1,7 +1,8 @@
-﻿namespace ModularShips.Core.Templates.Elements
+﻿namespace ModularShips.Core.Templates
 {
-    public class EngineElement
+    public class EngineTemplate
     {
+        public int Power { get; set; }
         public int MaximumSpeed { get; set; }
         public int Acceleration { get; set; }
         public int Deceleration { get; set; }

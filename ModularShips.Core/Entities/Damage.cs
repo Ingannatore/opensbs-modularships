@@ -6,7 +6,7 @@ namespace ModularShips.Core.Entities
     {
         public DamageType Type { get; }
         public int Amount { get; }
-        public bool IsEmpty => Amount == 0;
+        public bool IsZero => Amount == 0;
 
         public Damage(DamageType type, int amount)
         {

@@ -4,8 +4,8 @@
     {
         Energy = 0,
         Cargo = 1,
-        Ships = 2,
-        Drones = 3,
-        Ammunitions = 4
+        Hangar = 2,
+        Drone = 3,
+        Ammunition = 4
     }
 }

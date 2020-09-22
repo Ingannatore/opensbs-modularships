@@ -2,30 +2,38 @@
     "id": "ship:small:viper",
     "name": "Viper-class Interceptor",
     "description": "A fast and agile ship used mainly against fighters and bombers",
-    "category": "Starship",
-    "subcategory": "StarshipInterceptor",
+    "category": 8,
+    "subcategory": 43,
     "size": "Small",
+    "mass": 30000,
+    "hitpoints": 500,
     "value": 1000000,
-    "structure": {
-        "mass": 30000,
-        "hitpoints": 500
-    },
-    "storage": [
-        {
-            "type": "Energy",
-            "quantity": 350000000
-        },
-        {
-            "type": "Cargo",
-            "quantity": 200
-        }
-    ],
-    "modules": [
-        "weapon:beam:small:monoemitter",
-        "weapon:beam:small:monoemitter",
-        "sensors:small:radar",
-        "shield:small:multilayer",
-        "powerplant:small:fusion",
-        "engine:small:ion"
-    ]
+    "starship": {
+        "slots": [
+            {
+                "section": "Bow",
+                "moduleId": "weapon:beam:small:monoemitter"
+            },
+            {
+                "section": "Bow",
+                "moduleId": "weapon:beam:small:monoemitter"
+            },
+            {
+                "section": "Middle",
+                "moduleId": "sensors:small:radar"
+            },
+            {
+                "section": "Middle",
+                "moduleId": "powerplant:small:fusion"
+            },
+            {
+                "section": "Middle",
+                "moduleId": "shield:small:multilayer"
+            },
+            {
+                "section": "Stern",
+                "moduleId": "engine:small:ion"
+            }
+        ]
+    }
 }

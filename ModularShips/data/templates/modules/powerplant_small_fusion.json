@@ -1,14 +1,15 @@
 ﻿{
     "id": "powerplant:small:fusion",
-    "name": "1GJ Compact Fusion Power Plant",
+    "name": "1MW Compact Fusion Power Plant",
     "description": "A miniaturized deuterium-deuterium fusion power plant",
     "category": "Module",
     "subcategory": "ModulePowerplant",
     "size": "Small",
+    "mass": 500,
+    "hitpoints": 40,
     "value": 25000,
-    "power": 1.0,
-    "structure": {
-        "mass": 500,
-        "hitpoints": 40
+    "powerplant": {
+        "power": 1000000,
+        "capacity": 5000000
     }
 }

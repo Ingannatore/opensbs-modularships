@@ -1,17 +1,15 @@
 ﻿{
     "id": "engine:small:ion",
-    "name": "6G Ion Engine",
+    "name": "4MN Ion Engine",
     "description": "A single-nozzle ion engine that uses Xenon gas as fuel",
     "category": "Module",
     "subcategory": "ModuleEngine",
     "size": "Small",
+    "mass": 500,
+    "hitpoints": 80,
     "value": 15000,
-    "power": -0.4,
-    "structure": {
-        "mass": 500,
-        "hitpoints": 80
-    },
     "engine": {
+        "power": -400000,
         "maximumSpeed": 1000,
         "acceleration": 100,
         "deceleration": 100,

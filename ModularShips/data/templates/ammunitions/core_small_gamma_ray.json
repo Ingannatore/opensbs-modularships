@@ -5,14 +5,14 @@
     "category": "Ammunition",
     "subcategory": "AmmunitionCore",
     "size": "Small",
+    "mass": 50,
+    "hitpoints": 1,
     "value": 100,
-    "structure": {
-        "mass": 50,
-        "hitpoints": 1
-    },
-    "damage": {
-        "kinetic": 0,
-        "thermal": 10,
-        "em": 0
+    "ammunition": {
+        "damage": {
+            "kinetic": 0,
+            "thermal": 10,
+            "em": 0
+        }
     }
 }

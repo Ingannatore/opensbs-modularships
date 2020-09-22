@@ -1,67 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class HullComponent : IUpdatable, IDamageable
+    public class HullComponent
     {
-        public BoundedValue Hitpoints { get; protected set; }
-        public bool IsDestroyed { get; protected set; }
+        public BoundedValue Hitpoints { get; private set; }
+        public bool IsDestroyed => Hitpoints.Current <= 0;
 
-        private readonly Queue<Damage> _damages;
+        private readonly IDictionary<DefenseLayer, IDamageable> _defenses;
 
         public HullComponent(int hitpoints)
         {
             Hitpoints = new BoundedValue(hitpoints);
-            _damages = new Queue<Damage>();
+            _defenses = new Dictionary<DefenseLayer, IDamageable>();
         }
 
-        public Damage ApplyDamage(Damage damage)
+        public void SetDefense(DefenseLayer layer, IDamageable defense)
         {
-            _damages.Enqueue(damage);
-            return null;
-        }
-
-        public void Update(TimeSpan deltaT, Entity owner)
-        {
-            while (_damages.TryDequeue(out var damage))
+            if (defense == null)
             {
-                ApplyDamage(damage, owner);
+                _defenses.Remove(layer);
+            }
+            else
+            {
+                _defenses[layer] = defense;
+            }
+        }
+
+        public void ApplyDamage(Damage damage)
+        {
+            if (_defenses.ContainsKey(DefenseLayer.Shield))
+            {
+                damage = _defenses[DefenseLayer.Shield].ApplyDamage(damage);
             }
 
-            IsDestroyed = Hitpoints.Current <= 0;
+            if (_defenses.ContainsKey(DefenseLayer.Armor))
+            {
+                damage = _defenses[DefenseLayer.Armor].ApplyDamage(damage);
+            }
+
+            Hitpoints -= damage.Amount;
         }
 
         public override string ToString()
         {
-            return Hitpoints.ToString();
-        }
-
-        private void ApplyDamage(Damage damage, Entity owner)
-        {
-            var shield = owner.Modules.GetShieldModule();
-            if (shield != null)
-            {
-                damage = shield.ApplyDamage(damage);
-                if (damage == null)
-                {
-                    return;
-                }
-            }
-
-            var armor = owner.Modules.GetArmorModule();
-            if (armor != null)
-            {
-                damage = armor.ApplyDamage(damage);
-                if (damage == null)
-                {
-                    return;
-                }
-            }
-
-            Hitpoints -= damage.Amount;
+            return $"HP: {Hitpoints}";
         }
     }
 }

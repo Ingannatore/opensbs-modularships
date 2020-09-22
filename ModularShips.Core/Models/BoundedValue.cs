@@ -15,6 +15,20 @@ namespace ModularShips.Core.Models
             Min = min;
         }
 
+        public int Decrease(int value)
+        {
+            if (Current >= value)
+            {
+                Current -= value;
+                return 0;
+            }
+
+            var delta = value - Current;
+            Current = 0;
+
+            return delta;
+        }
+
         public static BoundedValue operator +(BoundedValue a, int b)
         {
             a.Current = Math.Max(a.Min, Math.Min(a.Max, a.Current + b));
@@ -27,9 +41,36 @@ namespace ModularShips.Core.Models
             return a;
         }
 
+        public static bool operator ==(BoundedValue a, int b)
+        {
+            return a != null && a.Current == b;
+        }
+
+        public static bool operator !=(BoundedValue a, int b)
+        {
+            return a == null || a.Current != b;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == GetType() && Equals((BoundedValue) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Max, Min, Current);
+        }
+
         public override string ToString()
         {
             return $"{Current}/{Max}";
+        }
+
+        private bool Equals(BoundedValue other)
+        {
+            return Max == other.Max && Min == other.Min && Current == other.Current;
         }
     }
 }

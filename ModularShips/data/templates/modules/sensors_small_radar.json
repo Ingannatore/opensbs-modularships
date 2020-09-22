@@ -5,13 +5,11 @@
     "category": "Module",
     "subcategory": "ModuleSensors",
     "size": "Small",
+    "mass": 1000,
+    "hitpoints": 40,
     "value": 15000,
-    "power": -0.1,
-    "structure": {
-        "mass": 1000,
-        "hitpoints": 40
-    },
     "sensors": {
+        "power": -100000,
         "strength": {
             "emr": 10,
             "grav": 0,
