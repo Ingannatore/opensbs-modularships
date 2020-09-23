@@ -1,20 +1,21 @@
 ﻿using System;
 using ModularShips.Core.Entities;
 using ModularShips.Core.Entities.Interfaces;
-using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class ShieldModule : StarshipModule, IDamageable
+    public class ShieldModule : APoweredModule, IDamageable
     {
         public BoundedValue Capacity { get; protected set; }
         public DamageResistance Resists { get; }
+        public double Regeneration => Template.Shield.Regeneration * PowerFactor;
 
         public ShieldModule(Template template) : base(template)
         {
-            PowerPriority = 3;
+            Priority = 3;
+            NominalPower = template.Shield.Power;
             Capacity = new BoundedValue(template.Shield.Capacity);
             Resists = new DamageResistance(
                 template.Shield.Resists.Kinetic,
@@ -25,6 +26,11 @@ namespace ModularShips.Core.Modules
 
         public Damage ApplyDamage(Damage damage)
         {
+            if (IsDisabled)
+            {
+                return damage;
+            }
+
             var mitigatedDamage = Resists.Mitigate(damage);
             return new Damage(damage.Type, Capacity.Decrease(mitigatedDamage.Amount));
         }
@@ -39,21 +45,20 @@ namespace ModularShips.Core.Modules
             owner.Hull.SetDefense(DefenseLayer.Shield, null);
         }
 
-        public override void HandleMessage(Message message) { }
-
         public override void Update(TimeSpan deltaT, Entity owner)
         {
-            if (Capacity.IsMax)
+            base.Update(deltaT, owner);
+            if (IsDisabled || Capacity.IsMax)
             {
                 return;
             }
 
-            Capacity += (int) Math.Round(Template.Shield.Regeneration * deltaT.TotalSeconds);
+            Capacity += (int) Math.Round(Regeneration * deltaT.TotalSeconds);
         }
 
         public override string ToString()
         {
-            return $"{Capacity} [{Resists}]";
+            return $"[SHIELD] Capacity={Capacity}, Regeneration={Regeneration}, Resists={Resists}, Power={CurrentPower}/{Template.Shield.Power}";
         }
     }
 }

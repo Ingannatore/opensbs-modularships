@@ -32,7 +32,7 @@ namespace ModularShips.Core.Entities
         public override string ToString()
         {
             return FormattableString
-                .Invariant($"Kin {Kinetic:0.00}, The {Thermal:0.00}, Em {Electromagnetic:0.00}");
+                .Invariant($"K{Kinetic:0.00}/T{Thermal:0.00}/E{Electromagnetic:0.00}");
         }
     }
 }

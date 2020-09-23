@@ -1,18 +1,18 @@
 ﻿using System;
 using ModularShips.Core.Entities;
-using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class PowerplantModule : StarshipModule
+    public class PowerplantModule : APoweredModule
     {
         public BoundedValue Capacity { get; protected set; }
 
         public PowerplantModule(Template template) : base(template)
         {
-            PowerPriority = 1;
+            Priority = 1;
+            NominalPower = template.Powerplant.Power;
             Capacity = new BoundedValue(template.Powerplant.Capacity);
         }
 
@@ -26,11 +26,12 @@ namespace ModularShips.Core.Modules
             owner.Powergrid.SetPowerplant(null);
         }
 
-        public override void HandleMessage(Message message) { }
-
         public override void Update(TimeSpan deltaT, Entity owner)
         {
-            Capacity += (int) Math.Round(Template.Powerplant.Power * deltaT.TotalSeconds);
+            if (!IsDisabled)
+            {
+                Capacity += (int) Math.Round(CurrentPower * deltaT.TotalSeconds);
+            }
         }
 
         public bool TryConsumeEnergy(int value)
@@ -46,7 +47,7 @@ namespace ModularShips.Core.Modules
 
         public override string ToString()
         {
-            return $"{Capacity} J ({Template.Powerplant.Power} W)";
+            return $"[POWERPLANT] Capacity={Capacity}, Power={CurrentPower}/{Template.Powerplant.Power}";
         }
     }
 }

@@ -9,7 +9,7 @@
     "hitpoints": 40,
     "value": 15000,
     "sensors": {
-        "power": -100000,
+        "power": 100000,
         "strength": {
             "emr": 10,
             "grav": 0,

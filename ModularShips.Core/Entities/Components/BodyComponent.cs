@@ -24,6 +24,11 @@ namespace ModularShips.Core.Entities.Components
             MoveBody(deltaT);
         }
 
+        public override string ToString()
+        {
+            return $"[BODY] Position={Position}, Direction={Direction}, LinearSpeed={LinearSpeed}, AngularSpeed={AngularSpeed}";
+        }
+
         private void RotateBody(TimeSpan deltaT)
         {
             var deltaYaw = AngularSpeed * deltaT.TotalSeconds;

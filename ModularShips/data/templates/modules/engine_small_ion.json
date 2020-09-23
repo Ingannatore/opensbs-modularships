@@ -9,7 +9,7 @@
     "hitpoints": 80,
     "value": 15000,
     "engine": {
-        "power": -400000,
+        "power": 400000,
         "maximumSpeed": 1000,
         "acceleration": 100,
         "deceleration": 100,

@@ -7,7 +7,7 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class ArmorModule : StarshipModule, IDamageable
+    public class ArmorModule : AStarshipModule, IDamageable
     {
         public DamageResistance Resists { get; }
 

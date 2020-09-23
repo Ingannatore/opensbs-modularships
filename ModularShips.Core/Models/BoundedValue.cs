@@ -15,6 +15,13 @@ namespace ModularShips.Core.Models
             Min = min;
         }
 
+        public BoundedValue(int max, int min, int current)
+        {
+            Max = max;
+            Min = min;
+            Current = current;
+        }
+
         public int Decrease(int value)
         {
             if (Current >= value)
@@ -49,6 +56,16 @@ namespace ModularShips.Core.Models
         public static bool operator !=(BoundedValue a, int b)
         {
             return a == null || a.Current != b;
+        }
+
+        public static bool operator >(BoundedValue a, int b)
+        {
+            return a != null && a.Current > b;
+        }
+
+        public static bool operator <(BoundedValue a, int b)
+        {
+            return a != null && a.Current < b;
         }
 
         public override bool Equals(object obj)

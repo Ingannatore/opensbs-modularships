@@ -46,7 +46,7 @@ namespace ModularShips.Core.Entities.Components
 
         public override string ToString()
         {
-            return $"HP: {Hitpoints}";
+            return $"[HULL] HP={Hitpoints}, Destroyed={IsDestroyed}";
         }
     }
 }

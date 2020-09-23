@@ -9,7 +9,7 @@
     "hitpoints": 40,
     "value": 8000,
     "weapon": {
-        "power": -100000,
+        "power": 100000,
         "ammunition" : {
             "type": "AmmunitionCore",
             "reload": 4,

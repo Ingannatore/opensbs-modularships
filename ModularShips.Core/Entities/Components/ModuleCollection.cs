@@ -7,27 +7,27 @@ using ModularShips.Core.Modules;
 
 namespace ModularShips.Core.Entities.Components
 {
-    public class ModuleCollection : IEnumerable<StarshipModule>
+    public class ModuleCollection : IEnumerable<AStarshipModule>
     {
-        private readonly SortedSet<StarshipModule> _modules;
+        private readonly SortedSet<AStarshipModule> _modules;
 
         public ModuleCollection()
         {
-            _modules = new SortedSet<StarshipModule>();
+            _modules = new SortedSet<AStarshipModule>();
         }
 
-        public void Add(StarshipModule module, Entity owner)
+        public void Add(AStarshipModule module, Entity owner)
         {
             _modules.Add(module);
             module.OnInstall(owner);
         }
 
-        public T Get<T>(EntitySubcategory subcategory) where T : StarshipModule
+        public T Get<T>(EntitySubcategory subcategory) where T : AStarshipModule
         {
             return (T) _modules.FirstOrDefault(m => m.Template.Subcategory == subcategory);
         }
 
-        public IEnumerable<T> GetAll<T>(EntitySubcategory subcategory) where T : StarshipModule
+        public IEnumerable<T> GetAll<T>(EntitySubcategory subcategory) where T : AStarshipModule
         {
             return _modules
                 .Where(m => m.Template.Subcategory == subcategory)
@@ -35,7 +35,7 @@ namespace ModularShips.Core.Entities.Components
                 .ToList();
         }
 
-        public IEnumerator<StarshipModule> GetEnumerator()
+        public IEnumerator<AStarshipModule> GetEnumerator()
         {
             return _modules.GetEnumerator();
         }

@@ -9,7 +9,7 @@
     "hitpoints": 40,
     "value": 25000,
     "shield": {
-        "power": -200000,
+        "power": 200000,
         "capacity": 100,
         "regeneration":10,
         "resists": {

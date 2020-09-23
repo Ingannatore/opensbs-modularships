@@ -24,6 +24,7 @@ namespace ModularShips.Core.Entities
 
         public void Update(TimeSpan deltaT)
         {
+            Modules.Update(deltaT, this);
             Body.Update(deltaT);
         }
     }

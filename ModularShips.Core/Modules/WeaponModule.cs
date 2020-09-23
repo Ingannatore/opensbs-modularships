@@ -5,11 +5,12 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class WeaponModule : StarshipModule
+    public class WeaponModule : APoweredModule
     {
         public WeaponModule(Template template) : base(template)
         {
-            PowerPriority = 5;
+            Priority = 5;
+            NominalPower = template.Weapon.Power;
         }
 
         public override void OnInstall(Entity owner) { }

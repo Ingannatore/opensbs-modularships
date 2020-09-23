@@ -5,11 +5,12 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class SensorsModule : StarshipModule
+    public class SensorsModule : APoweredModule
     {
         public SensorsModule(Template template) : base(template)
         {
-            PowerPriority = 4;
+            Priority = 4;
+            NominalPower = template.Sensors.Power;
         }
 
         public override void OnInstall(Entity owner) { }
