@@ -5,6 +5,7 @@ using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;
+using Newtonsoft.Json.Linq;
 
 namespace ModularShips
 {
@@ -29,11 +30,11 @@ namespace ModularShips
                 switch (i)
                 {
                     case 1:
-                        engine.HandleMessage(new Message(null, "setPowerLevel", 100));
+                        engine.HandleMessage(new Message(null, "setPowerLevel", new JValue(100)));
                         Console.WriteLine("<COMMAND> engine.setPowerLevel(100)");
                         break;
                     case 2:
-                        engine.HandleMessage(new Message(null, "setThrottle", 10));
+                        engine.HandleMessage(new Message(null, "setThrottle", new JValue(10)));
                         Console.WriteLine("<COMMAND> engine.setThrottle(10)");
                         break;
                     case 3:
@@ -41,11 +42,11 @@ namespace ModularShips
                         Console.WriteLine("<DAMAGE> Kinetic:40");
                         break;
                     case 4:
-                        shield.HandleMessage(new Message(null, "setPowerLevel", 100));
+                        shield.HandleMessage(new Message(null, "setPowerLevel", new JValue(100)));
                         Console.WriteLine("<COMMAND> shield.setPowerLevel(100)");
                         break;
                     case 5:
-                        engine.HandleMessage(new Message(null, "setThrottle", 0));
+                        engine.HandleMessage(new Message(null, "setThrottle", new JValue(0)));
                         Console.WriteLine("<COMMAND> engine.setThrottle(0)");
                         break;
                     case 6:
@@ -53,7 +54,7 @@ namespace ModularShips
                         Console.WriteLine("<DAMAGE> Kinetic:40");
                         break;
                     case 7:
-                        powerplant.HandleMessage(new Message(null, "setPowerLevel", 50));
+                        powerplant.HandleMessage(new Message(null, "setPowerLevel", new JValue(50)));
                         Console.WriteLine("<COMMAND> powerplant.setPowerLevel(50)");
                         break;
                 }

@@ -25,7 +25,7 @@ namespace ModularShips.Core.Modules
         {
             if (message.Command == SetPowerLevelCommand)
             {
-                PowerLevel = new BoundedValue(200, 0, message.Content);
+                PowerLevel = new BoundedValue(200, 0, message.Content.ToObject<int>());
             }
         }
 

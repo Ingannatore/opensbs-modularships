@@ -33,10 +33,10 @@ namespace ModularShips.Core.Modules
             switch (message.Command)
             {
                 case SetThrottleCommand:
-                    Throttle = message.Content;
+                    Throttle = message.Content.ToObject<int>();
                     break;
                 case SetRudderCommand:
-                    Rudder = message.Content;
+                    Rudder = message.Content.ToObject<int>();
                     break;
                 default:
                     base.HandleMessage(message);

@@ -1,12 +1,14 @@
-﻿namespace ModularShips.Core.Messages
+﻿using Newtonsoft.Json.Linq;
+
+namespace ModularShips.Core.Messages
 {
     public class Message
     {
         public MessageRecipient Recipient { get; }
         public string Command { get; }
-        public int Content { get; }
+        public JValue Content { get; }
 
-        public Message(string recipient, string command, int content)
+        public Message(string recipient, string command, JValue content)
         {
             Recipient = new MessageRecipient(recipient);
             Command = command;
