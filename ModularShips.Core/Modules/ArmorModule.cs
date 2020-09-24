@@ -9,10 +9,12 @@ namespace ModularShips.Core.Modules
 {
     public class ArmorModule : AStarshipModule, IDamageable
     {
+        public BoundedValue Capacity { get; }
         public DamageResistance Resists { get; }
 
         public ArmorModule(Template template) : base(template)
         {
+            Capacity = new BoundedValue(template.Armor.Capacity);
             Resists = new DamageResistance(
                 template.Armor.Resists.Kinetic,
                 template.Armor.Resists.Thermal,
@@ -23,7 +25,7 @@ namespace ModularShips.Core.Modules
         public Damage ApplyDamage(Damage damage)
         {
             var mitigatedDamage = Resists.Mitigate(damage);
-            return new Damage(damage.Type, Hitpoints.Decrease(mitigatedDamage.Amount));
+            return new Damage(damage.Type, Capacity.Decrease(mitigatedDamage.Amount));
         }
 
         public override void OnInstall(Entity owner)
@@ -41,7 +43,7 @@ namespace ModularShips.Core.Modules
 
         public override string ToString()
         {
-            return $"{Hitpoints} [{Resists}]";
+            return $"{Capacity} [{Resists}]";
         }
     }
 }

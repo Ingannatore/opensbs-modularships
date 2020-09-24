@@ -6,9 +6,10 @@
     "subcategory": "ModuleArmor",
     "size": "Small",
     "mass": 5000,
-    "hitpoints": 80,
+    "hitpoints": 40,
     "value": 5000,
     "armor": {
+        "capacity": 80,
         "resists": {
             "kinetic": 0.2,
             "thermal": 0.3,
