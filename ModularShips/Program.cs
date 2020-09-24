@@ -50,19 +50,24 @@ namespace ModularShips
                         Console.WriteLine("<COMMAND> engine.setThrottle(0)");
                         break;
                     case 6:
+                        powerplant.HandleMessage(new Message(null, "setPowerLevel", new JValue(50)));
+                        Console.WriteLine("<COMMAND> powerplant.setPowerLevel(50)");
+                        break;
+                    case 7:
                         viper.Hull.ApplyDamage(new Damage(DamageType.Kinetic, 40));
                         Console.WriteLine("<DAMAGE> Kinetic:40");
                         break;
-                    case 7:
-                        powerplant.HandleMessage(new Message(null, "setPowerLevel", new JValue(50)));
-                        Console.WriteLine("<COMMAND> powerplant.setPowerLevel(50)");
+                    case 8:
+                        powerplant.HandleMessage(new Message(null, "setPowerLevel", new JValue(75)));
+                        Console.WriteLine("<COMMAND> powerplant.setPowerLevel(80)");
                         break;
                 }
 
                 viper.Update(deltaT);
 
-                Console.WriteLine(viper.Hull);
                 Console.WriteLine(viper.Body);
+                Console.WriteLine(viper.Hull);
+                Console.WriteLine(viper.Powergrid);
                 Console.WriteLine(powerplant);
                 Console.WriteLine(engine);
                 Console.WriteLine(shield);

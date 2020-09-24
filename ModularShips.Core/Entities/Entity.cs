@@ -24,7 +24,9 @@ namespace ModularShips.Core.Entities
 
         public void Update(TimeSpan deltaT)
         {
+            Powergrid.Reset();
             Modules.Update(deltaT, this);
+            Powergrid.Update(deltaT);
             Body.Update(deltaT);
         }
     }
