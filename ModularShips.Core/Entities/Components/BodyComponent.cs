@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
-using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
+using ModularShips.Core.Utils;
 
 namespace ModularShips.Core.Entities.Components
 {

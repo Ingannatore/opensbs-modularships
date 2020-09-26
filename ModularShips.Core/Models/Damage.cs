@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using ModularShips.Core.Models.Enums;
 
 namespace ModularShips.Core.Models
 {

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Numerics;
 using ModularShips.Core;
+using ModularShips.Core.Entities;
 using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
 using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;
 using Newtonsoft.Json.Linq;

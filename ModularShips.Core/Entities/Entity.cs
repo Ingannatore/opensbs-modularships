@@ -2,6 +2,7 @@
 using System.Numerics;
 using ModularShips.Core.Entities.Components;
 using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Entities
@@ -27,7 +28,7 @@ namespace ModularShips.Core.Entities
 
         public void HandleMessage(Message message)
         {
-            if (message.Recipient == MessageRecipient.Module)
+            if (message.RecipientType == RecipientType.Module)
             {
                 Modules.HandleMessage(message);
                 return;

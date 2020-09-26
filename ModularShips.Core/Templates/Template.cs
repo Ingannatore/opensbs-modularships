@@ -1,4 +1,4 @@
-﻿using ModularShips.Core.Models;
+﻿using ModularShips.Core.Models.Enums;
 
 namespace ModularShips.Core.Templates
 {

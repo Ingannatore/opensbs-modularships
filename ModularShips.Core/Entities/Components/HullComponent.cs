@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
 using ModularShips.Core.Models.Interfaces;
 
 namespace ModularShips.Core.Entities.Components

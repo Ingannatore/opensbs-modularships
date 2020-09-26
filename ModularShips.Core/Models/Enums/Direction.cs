@@ -1,4 +1,4 @@
-﻿namespace ModularShips.Core.Models
+﻿namespace ModularShips.Core.Models.Enums
 {
     public enum Direction
     {

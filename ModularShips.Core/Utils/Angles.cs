@@ -1,7 +1,7 @@
 ﻿using System;
-using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
 
-namespace ModularShips.Core
+namespace ModularShips.Core.Utils
 {
     public static class Angles
     {

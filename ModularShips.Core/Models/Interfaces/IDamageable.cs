@@ -1,4 +1,6 @@
-﻿namespace ModularShips.Core.Models.Interfaces
+﻿using ModularShips.Core.Models.Enums;
+
+namespace ModularShips.Core.Models.Interfaces
 {
     public interface IDamageable
     {

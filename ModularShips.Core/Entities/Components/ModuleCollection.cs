@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
 using ModularShips.Core.Modules;
 
 namespace ModularShips.Core.Entities.Components
@@ -51,7 +52,7 @@ namespace ModularShips.Core.Entities.Components
 
         public void HandleMessage(Message message)
         {
-            if (message.Recipient == MessageRecipient.Module)
+            if (message.RecipientType == RecipientType.Module)
             {
                 _modulesIndex[message.ModuleId].HandleMessage(message);
             }

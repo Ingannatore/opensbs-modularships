@@ -1,4 +1,5 @@
 ﻿using System;
+using ModularShips.Core.Models.Enums;
 using Newtonsoft.Json.Linq;
 
 namespace ModularShips.Core.Models
@@ -9,7 +10,7 @@ namespace ModularShips.Core.Models
         public Guid ModuleId { get; }
         public string Command { get; }
         public JToken Content { get; }
-        public MessageRecipient Recipient { get; }
+        public RecipientType RecipientType { get; }
 
         public Message(string entityId, string moduleId, string command, JToken content)
         {
@@ -17,7 +18,7 @@ namespace ModularShips.Core.Models
             ModuleId = string.IsNullOrEmpty(moduleId) ? Guid.Empty : new Guid(moduleId);
             Command = command;
             Content = content;
-            Recipient = GetRecipientValue();
+            RecipientType = GetRecipientValue();
         }
 
         public override string ToString()
@@ -25,18 +26,18 @@ namespace ModularShips.Core.Models
             return $"<MESSAGE> EntityId={EntityId:N}, ModuleId={ModuleId:N}, Command={Command}";
         }
 
-        private MessageRecipient GetRecipientValue()
+        private RecipientType GetRecipientValue()
         {
             if (ModuleId != Guid.Empty)
             {
-                return MessageRecipient.Module;
+                return RecipientType.Module;
             }
             if (EntityId != Guid.Empty)
             {
-                return MessageRecipient.Entity;
+                return RecipientType.Entity;
             }
 
-            return MessageRecipient.Global;
+            return RecipientType.Global;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace ModularShips.Core
+namespace ModularShips.Core.Utils
 {
     public static class Vectors
     {

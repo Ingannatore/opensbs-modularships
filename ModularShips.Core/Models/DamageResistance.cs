@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ModularShips.Core.Models.Enums;
 
 namespace ModularShips.Core.Models
 {

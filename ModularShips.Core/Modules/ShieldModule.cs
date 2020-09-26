@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ModularShips.Core.Entities;
 using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
 using ModularShips.Core.Models.Interfaces;
 using ModularShips.Core.Templates;
 

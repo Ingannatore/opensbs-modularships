@@ -1,6 +1,6 @@
-﻿namespace ModularShips.Core.Models
+﻿namespace ModularShips.Core.Models.Enums
 {
-    public enum MessageRecipient
+    public enum RecipientType
     {
         Global = 0,
         Entity = 1,

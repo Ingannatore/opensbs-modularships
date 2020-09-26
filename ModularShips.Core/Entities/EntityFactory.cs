@@ -1,10 +1,9 @@
 ﻿using System;
-using ModularShips.Core.Entities;
-using ModularShips.Core.Models;
+using ModularShips.Core.Models.Enums;
 using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;
 
-namespace ModularShips.Core
+namespace ModularShips.Core.Entities
 {
     public class EntityFactory
     {
