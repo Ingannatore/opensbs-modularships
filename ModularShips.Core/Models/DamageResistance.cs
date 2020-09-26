@@ -16,7 +16,7 @@ namespace ModularShips.Core.Models
             {
                 {DamageType.Kinetic, kinetic},
                 {DamageType.Thermal, thermal},
-                {DamageType.Electromagnetic, em},
+                {DamageType.Electromagnetic, em}
             };
         }
 

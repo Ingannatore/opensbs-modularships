@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 using ModularShips.Core;
-using ModularShips.Core.Entities;
 using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
@@ -18,54 +18,95 @@ namespace ModularShips
             var library = new TemplateLibrary(TemplateLoader.Load(folder));
             var factory = new EntityFactory(library);
 
-            var deltaT = TimeSpan.FromSeconds(1);
             var viper = factory.Create("TEST", library.Get("ship:small:viper"));
             var powerplant = viper.Modules.Get<PowerplantModule>(EntitySubcategory.ModulePowerplant);
             var engine = viper.Modules.Get<EngineModule>(EntitySubcategory.ModuleEngine);
             var shield = viper.Modules.Get<ShieldModule>(EntitySubcategory.ModuleShield);
 
+            var messages = new Dictionary<int, Message>
+            {
+                {
+                    1,
+                    new Message(
+                        viper.Id.ToString(), engine.Id.ToString(),
+                        "setPowerLevel",
+                        JToken.FromObject(100)
+                    )
+                },
+                {
+                    2,
+                    new Message(
+                        viper.Id.ToString(), engine.Id.ToString(),
+                        "setThrottle",
+                        JToken.FromObject(10)
+                    )
+                },
+                {
+                    3,
+                    new Message(
+                        viper.Id.ToString(), null,
+                        "applyDamage",
+                        JToken.FromObject(new Damage(DamageType.Kinetic, 40, new Vector3(0, 0, 50)))
+                    )
+                },
+                {
+                    4,
+                    new Message(
+                        viper.Id.ToString(), shield.Id.ToString(),
+                        "setPowerLevel",
+                        JToken.FromObject(100)
+                    )
+                },
+                {
+                    5,
+                    new Message(
+                        viper.Id.ToString(), engine.Id.ToString(),
+                        "setThrottle",
+                        JToken.FromObject(0)
+                    )
+                },
+                {
+                    6,
+                    new Message(
+                        viper.Id.ToString(), powerplant.Id.ToString(),
+                        "setPowerLevel",
+                        JToken.FromObject(50)
+                    )
+                },
+                {
+                    7,
+                    new Message(
+                        viper.Id.ToString(), null,
+                        "applyDamage",
+                        JToken.FromObject(new Damage(DamageType.Kinetic, 40, new Vector3(0, 0, 50)))
+                    )
+                },
+                {
+                    8,
+                    new Message(
+                        viper.Id.ToString(), powerplant.Id.ToString(),
+                        "setPowerLevel",
+                        JToken.FromObject(75)
+                    )
+                },
+                {
+                    9,
+                    new Message(
+                        viper.Id.ToString(), null,
+                        "applyDamage",
+                        JToken.FromObject(new Damage(DamageType.Thermal, 100))
+                    )
+                }
+            };
+
+            var deltaT = TimeSpan.FromSeconds(1);
             for (var i = 0; i < 11; i++)
             {
                 Console.WriteLine($"--- UPDATE {i} ---");
-
-                switch (i)
+                if (messages.ContainsKey(i))
                 {
-                    case 1:
-                        engine.HandleMessage(new Message(null, "setPowerLevel", new JValue(100)));
-                        Console.WriteLine("<COMMAND> engine.setPowerLevel(100)");
-                        break;
-                    case 2:
-                        engine.HandleMessage(new Message(null, "setThrottle", new JValue(10)));
-                        Console.WriteLine("<COMMAND> engine.setThrottle(10)");
-                        break;
-                    case 3:
-                        viper.ApplyDamage(new Damage(DamageType.Kinetic, 40, new Vector3(0, 0, 50)));
-                        Console.WriteLine("<DAMAGE> Kinetic:40 From:<0,0,50>");
-                        break;
-                    case 4:
-                        shield.HandleMessage(new Message(null, "setPowerLevel", new JValue(100)));
-                        Console.WriteLine("<COMMAND> shield.setPowerLevel(100)");
-                        break;
-                    case 5:
-                        engine.HandleMessage(new Message(null, "setThrottle", new JValue(0)));
-                        Console.WriteLine("<COMMAND> engine.setThrottle(0)");
-                        break;
-                    case 6:
-                        powerplant.HandleMessage(new Message(null, "setPowerLevel", new JValue(50)));
-                        Console.WriteLine("<COMMAND> powerplant.setPowerLevel(50)");
-                        break;
-                    case 7:
-                        viper.ApplyDamage(new Damage(DamageType.Kinetic, 40, new Vector3(0, 0, 50)));
-                        Console.WriteLine("<DAMAGE> Kinetic:40 From:<0,0,50>");
-                        break;
-                    case 8:
-                        powerplant.HandleMessage(new Message(null, "setPowerLevel", new JValue(75)));
-                        Console.WriteLine("<COMMAND> powerplant.setPowerLevel(80)");
-                        break;
-                    case 9:
-                        viper.ApplyDamage(new Damage(DamageType.Thermal, 100));
-                        Console.WriteLine("<DAMAGE> Thermal:100 From:<null>");
-                        break;
+                    Console.WriteLine(messages[i]);
+                    viper.HandleMessage(messages[i]);
                 }
 
                 viper.Update(deltaT);

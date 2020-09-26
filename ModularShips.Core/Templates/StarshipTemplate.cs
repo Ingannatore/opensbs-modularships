@@ -5,11 +5,11 @@ namespace ModularShips.Core.Templates
 {
     public class StarshipTemplate : Template
     {
-        public IList<SlotElement> Slots { get; set; }
+        public IList<SlotElement> Slots { get; }
 
-        public StarshipTemplate()
+        public StarshipTemplate(IEnumerable<SlotElement> slots)
         {
-            Slots = new List<SlotElement>();
+            Slots = new List<SlotElement>(slots);
         }
     }
 }

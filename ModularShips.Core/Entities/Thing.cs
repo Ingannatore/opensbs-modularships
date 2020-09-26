@@ -8,7 +8,7 @@ namespace ModularShips.Core.Entities
         public Guid Id { get; }
         public Template Template { get; }
 
-        public Thing(Template template)
+        protected Thing(Template template)
         {
             Id = Guid.NewGuid();
             Template = template;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using ModularShips.Core.Entities.Components;
+using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
 using ModularShips.Core.Templates;
 
@@ -8,6 +9,8 @@ namespace ModularShips.Core.Entities
 {
     public class Entity : Thing
     {
+        private const string ApplyDamageCommand = "applyDamage";
+
         public string Name { get; }
         public BodyComponent Body { get; }
         public HullComponent Hull { get; }
@@ -23,6 +26,22 @@ namespace ModularShips.Core.Entities
             Modules = new ModuleCollection();
         }
 
+        public void HandleMessage(Message message)
+        {
+            if (message.Recipient == MessageRecipient.Module)
+            {
+                Modules.HandleMessage(message);
+                return;
+            }
+
+            switch (message.Command)
+            {
+                case ApplyDamageCommand:
+                    ApplyDamage(message.Content.ToObject<Damage>());
+                    break;
+            }
+        }
+
         public void Update(TimeSpan deltaT)
         {
             Powergrid.Reset();
@@ -31,7 +50,7 @@ namespace ModularShips.Core.Entities
             Body.Update(deltaT);
         }
 
-        public void ApplyDamage(Damage damage)
+        private void ApplyDamage(Damage damage)
         {
             if (damage.IsDirectional)
             {

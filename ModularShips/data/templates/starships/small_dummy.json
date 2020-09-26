@@ -7,5 +7,8 @@
     "size": "Small",
     "mass": 1000,
     "hitpoints": 100,
-    "value": 100
+    "value": 100,
+    "starship": {
+        "slots": []
+    }
 }

@@ -9,6 +9,6 @@
         Goods = 5,
         Hazard = 6,
         Module = 7,
-        Starship = 8,
+        Starship = 8
     }
 }
