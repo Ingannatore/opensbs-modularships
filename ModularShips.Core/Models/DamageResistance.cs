@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ModularShips.Core.Models;
 
-namespace ModularShips.Core.Entities
+namespace ModularShips.Core.Models
 {
     public class DamageResistance
     {

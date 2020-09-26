@@ -1,7 +1,6 @@
 ﻿using System.Numerics;
-using ModularShips.Core.Models;
 
-namespace ModularShips.Core.Entities
+namespace ModularShips.Core.Models
 {
     public class Damage
     {
