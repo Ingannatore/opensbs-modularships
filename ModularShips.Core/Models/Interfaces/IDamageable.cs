@@ -1,6 +1,4 @@
-﻿using ModularShips.Core.Models;
-
-namespace ModularShips.Core.Entities.Interfaces
+﻿namespace ModularShips.Core.Models.Interfaces
 {
     public interface IDamageable
     {

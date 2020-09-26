@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
+using ModularShips.Core.Models.Interfaces;
 
 namespace ModularShips.Core.Entities.Components
 {

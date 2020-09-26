@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using ModularShips.Core.Entities;
-using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
+using ModularShips.Core.Models.Interfaces;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
