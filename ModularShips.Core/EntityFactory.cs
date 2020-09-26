@@ -26,7 +26,7 @@ namespace ModularShips.Core
             return entity;
         }
 
-        private AStarshipModule CreateModule(string moduleId)
+        private StarshipModule CreateModule(string moduleId)
         {
             var template = _templateLibrary.Get(moduleId);
             return template.Subcategory switch

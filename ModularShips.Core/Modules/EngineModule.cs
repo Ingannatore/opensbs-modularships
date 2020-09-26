@@ -5,7 +5,7 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class EngineModule : APoweredModule
+    public class EngineModule : PoweredModule
     {
         private const string SetThrottleCommand = "setThrottle";
         private const string SetRudderCommand = "setRudder";

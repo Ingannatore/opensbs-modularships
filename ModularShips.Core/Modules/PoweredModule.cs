@@ -6,7 +6,7 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public abstract class APoweredModule : AStarshipModule
+    public abstract class PoweredModule : StarshipModule
     {
         private const string SetPowerLevelCommand = "setPowerLevel";
 
@@ -16,7 +16,7 @@ namespace ModularShips.Core.Modules
         public bool IsDisabled => PowerLevel == 0;
         protected double PowerFactor => PowerLevel.Current / 100.0;
 
-        protected APoweredModule(Template template) : base(template)
+        protected PoweredModule(Template template) : base(template)
         {
             PowerLevel = new BoundedValue(200, 0, 0);
         }

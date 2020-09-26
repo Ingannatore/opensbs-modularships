@@ -5,7 +5,7 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class PowerplantModule : APoweredModule
+    public class PowerplantModule : PoweredModule
     {
         public BoundedValue Capacity { get; protected set; }
 

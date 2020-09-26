@@ -5,7 +5,7 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class SensorsModule : APoweredModule
+    public class SensorsModule : PoweredModule
     {
         public SensorsModule(Template template) : base(template)
         {

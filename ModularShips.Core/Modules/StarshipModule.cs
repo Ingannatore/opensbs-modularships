@@ -6,12 +6,12 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public abstract class AStarshipModule : Thing, IComparable
+    public abstract class StarshipModule : Thing, IComparable
     {
         public BoundedValue Hitpoints { get; }
         public int Priority { get; protected set; }
 
-        protected AStarshipModule(Template template) : base(template)
+        protected StarshipModule(Template template) : base(template)
         {
             Hitpoints = new BoundedValue(template.Hitpoints);
         }
@@ -23,7 +23,7 @@ namespace ModularShips.Core.Modules
                 return 1;
             }
 
-            if (obj is AStarshipModule otherTemperature)
+            if (obj is StarshipModule otherTemperature)
             {
                 return Priority.CompareTo(otherTemperature.Priority);
             }

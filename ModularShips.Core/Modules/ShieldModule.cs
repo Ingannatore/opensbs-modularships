@@ -7,7 +7,7 @@ using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Modules
 {
-    public class ShieldModule : APoweredModule, IDamageable
+    public class ShieldModule : PoweredModule, IDamageable
     {
         public IDictionary<Direction, BoundedValue> Capacities { get; }
         public DamageResistance Resists { get; }
