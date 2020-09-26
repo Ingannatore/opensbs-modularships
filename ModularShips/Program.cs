@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Numerics;
 using ModularShips.Core;
-using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
 using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;

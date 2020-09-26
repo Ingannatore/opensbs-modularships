@@ -1,8 +1,7 @@
 ﻿using System;
-using ModularShips.Core.Models;
 using Newtonsoft.Json.Linq;
 
-namespace ModularShips.Core.Messages
+namespace ModularShips.Core.Models
 {
     public class Message
     {

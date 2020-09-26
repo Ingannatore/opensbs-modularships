@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Numerics;
 using ModularShips.Core.Entities.Components;
-using ModularShips.Core.Messages;
 using ModularShips.Core.Models;
 using ModularShips.Core.Templates;
 
