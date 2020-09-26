@@ -1,7 +1,9 @@
-﻿namespace ModularShips.Core.Entities.Interfaces
+﻿using ModularShips.Core.Models;
+
+namespace ModularShips.Core.Entities.Interfaces
 {
     public interface IDamageable
     {
-        Damage ApplyDamage(Damage damage);
+        Damage ApplyDamage(Damage damage, Direction direction);
     }
 }

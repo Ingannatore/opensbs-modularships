@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
 
@@ -31,14 +32,22 @@ namespace ModularShips.Core.Entities.Components
 
         public void ApplyDamage(Damage damage)
         {
+            foreach (var direction in (Direction[]) Enum.GetValues(typeof(Direction)))
+            {
+                ApplyDamage(damage, direction);
+            }
+        }
+
+        public void ApplyDamage(Damage damage, Direction direction)
+        {
             if (_defenses.ContainsKey(DefenseLayer.Shield))
             {
-                damage = _defenses[DefenseLayer.Shield].ApplyDamage(damage);
+                damage = _defenses[DefenseLayer.Shield].ApplyDamage(damage, direction);
             }
 
             if (_defenses.ContainsKey(DefenseLayer.Armor))
             {
-                damage = _defenses[DefenseLayer.Armor].ApplyDamage(damage);
+                damage = _defenses[DefenseLayer.Armor].ApplyDamage(damage, direction);
             }
 
             Hitpoints -= damage.Amount;

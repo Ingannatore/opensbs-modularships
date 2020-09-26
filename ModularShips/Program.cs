@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using ModularShips.Core;
 using ModularShips.Core.Entities;
 using ModularShips.Core.Messages;
@@ -23,7 +24,7 @@ namespace ModularShips
             var engine = viper.Modules.Get<EngineModule>(EntitySubcategory.ModuleEngine);
             var shield = viper.Modules.Get<ShieldModule>(EntitySubcategory.ModuleShield);
 
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 11; i++)
             {
                 Console.WriteLine($"--- UPDATE {i} ---");
 
@@ -38,8 +39,8 @@ namespace ModularShips
                         Console.WriteLine("<COMMAND> engine.setThrottle(10)");
                         break;
                     case 3:
-                        viper.Hull.ApplyDamage(new Damage(DamageType.Kinetic, 40));
-                        Console.WriteLine("<DAMAGE> Kinetic:40");
+                        viper.ApplyDamage(new Damage(DamageType.Kinetic, 40, new Vector3(0, 0, 50)));
+                        Console.WriteLine("<DAMAGE> Kinetic:40 From:<0,0,50>");
                         break;
                     case 4:
                         shield.HandleMessage(new Message(null, "setPowerLevel", new JValue(100)));
@@ -54,12 +55,16 @@ namespace ModularShips
                         Console.WriteLine("<COMMAND> powerplant.setPowerLevel(50)");
                         break;
                     case 7:
-                        viper.Hull.ApplyDamage(new Damage(DamageType.Kinetic, 40));
-                        Console.WriteLine("<DAMAGE> Kinetic:40");
+                        viper.ApplyDamage(new Damage(DamageType.Kinetic, 40, new Vector3(0, 0, 50)));
+                        Console.WriteLine("<DAMAGE> Kinetic:40 From:<0,0,50>");
                         break;
                     case 8:
                         powerplant.HandleMessage(new Message(null, "setPowerLevel", new JValue(75)));
                         Console.WriteLine("<COMMAND> powerplant.setPowerLevel(80)");
+                        break;
+                    case 9:
+                        viper.ApplyDamage(new Damage(DamageType.Thermal, 100));
+                        Console.WriteLine("<DAMAGE> Thermal:100 From:<null>");
                         break;
                 }
 

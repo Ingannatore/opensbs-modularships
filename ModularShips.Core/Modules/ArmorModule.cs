@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ModularShips.Core.Entities;
 using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Messages;
@@ -9,12 +10,18 @@ namespace ModularShips.Core.Modules
 {
     public class ArmorModule : AStarshipModule, IDamageable
     {
-        public BoundedValue Capacity { get; }
+        public IDictionary<Direction, BoundedValue> Capacities { get; }
         public DamageResistance Resists { get; }
 
         public ArmorModule(Template template) : base(template)
         {
-            Capacity = new BoundedValue(template.Armor.Capacity);
+            Capacities = new Dictionary<Direction, BoundedValue>
+            {
+                {Direction.Ahead, new BoundedValue(template.Armor.Capacity)},
+                {Direction.Starboard, new BoundedValue(template.Armor.Capacity)},
+                {Direction.Astern, new BoundedValue(template.Armor.Capacity)},
+                {Direction.Port, new BoundedValue(template.Armor.Capacity)}
+            };
             Resists = new DamageResistance(
                 template.Armor.Resists.Kinetic,
                 template.Armor.Resists.Thermal,
@@ -22,10 +29,11 @@ namespace ModularShips.Core.Modules
             );
         }
 
-        public Damage ApplyDamage(Damage damage)
+        public Damage ApplyDamage(Damage damage, Direction direction)
         {
             var mitigatedDamage = Resists.Mitigate(damage);
-            return new Damage(damage.Type, Capacity.Decrease(mitigatedDamage.Amount));
+            var remainingDamage = Capacities[direction].Decrease(mitigatedDamage.Amount);
+            return new Damage(damage.Type, remainingDamage, damage.From);
         }
 
         public override void OnInstall(Entity owner)
@@ -43,7 +51,7 @@ namespace ModularShips.Core.Modules
 
         public override string ToString()
         {
-            return $"{Capacity} [{Resists}]";
+            return $"<{Capacities[Direction.Ahead]} {Capacities[Direction.Starboard]} {Capacities[Direction.Astern]} {Capacities[Direction.Port]}> [{Resists}]";
         }
     }
 }

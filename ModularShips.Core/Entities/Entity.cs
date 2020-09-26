@@ -29,5 +29,18 @@ namespace ModularShips.Core.Entities
             Powergrid.Update(deltaT);
             Body.Update(deltaT);
         }
+
+        public void ApplyDamage(Damage damage)
+        {
+            if (damage.IsDirectional)
+            {
+                Hull.ApplyDamage(damage, Body.GetDirection(damage.From.Value));
+            }
+            else
+            {
+                Hull.ApplyDamage(damage);
+            }
+
+        }
     }
 }

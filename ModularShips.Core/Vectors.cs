@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 
 namespace ModularShips.Core
 {
@@ -13,6 +14,11 @@ namespace ModularShips.Core
         public static Vector3 Move(Vector3 position, Vector3 direction, double value)
         {
             return position + direction * (float) value;
+        }
+
+        public static double AngleBetween(Vector3 vector1, Vector3 vector2)
+        {
+            return Math.Acos(Vector3.Dot(vector1, vector2) / (vector1.Length() * vector2.Length()));
         }
     }
 }

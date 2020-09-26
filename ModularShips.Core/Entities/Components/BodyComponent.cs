@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using ModularShips.Core.Models;
 
 namespace ModularShips.Core.Entities.Components
 {
@@ -22,6 +23,11 @@ namespace ModularShips.Core.Entities.Components
         {
             RotateBody(deltaT);
             MoveBody(deltaT);
+        }
+
+        public Direction GetDirection(Vector3 point)
+        {
+            return Angles.ToDirection(Vectors.AngleBetween(point - Position, Direction));
         }
 
         public override string ToString()

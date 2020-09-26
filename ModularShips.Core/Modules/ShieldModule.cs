@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ModularShips.Core.Entities;
 using ModularShips.Core.Entities.Interfaces;
 using ModularShips.Core.Models;
@@ -8,7 +9,7 @@ namespace ModularShips.Core.Modules
 {
     public class ShieldModule : APoweredModule, IDamageable
     {
-        public BoundedValue Capacity { get; protected set; }
+        public IDictionary<Direction, BoundedValue> Capacities { get; }
         public DamageResistance Resists { get; }
         public double Regeneration => Template.Shield.Regeneration * PowerFactor;
 
@@ -16,7 +17,13 @@ namespace ModularShips.Core.Modules
         {
             Priority = 3;
             NominalPower = template.Shield.Power;
-            Capacity = new BoundedValue(template.Shield.Capacity);
+            Capacities = new Dictionary<Direction, BoundedValue>
+            {
+                {Direction.Ahead, new BoundedValue(template.Shield.Capacity)},
+                {Direction.Starboard, new BoundedValue(template.Shield.Capacity)},
+                {Direction.Astern, new BoundedValue(template.Shield.Capacity)},
+                {Direction.Port, new BoundedValue(template.Shield.Capacity)}
+            };
             Resists = new DamageResistance(
                 template.Shield.Resists.Kinetic,
                 template.Shield.Resists.Thermal,
@@ -24,7 +31,7 @@ namespace ModularShips.Core.Modules
             );
         }
 
-        public Damage ApplyDamage(Damage damage)
+        public Damage ApplyDamage(Damage damage, Direction direction)
         {
             if (IsDisabled)
             {
@@ -32,7 +39,8 @@ namespace ModularShips.Core.Modules
             }
 
             var mitigatedDamage = Resists.Mitigate(damage);
-            return new Damage(damage.Type, Capacity.Decrease(mitigatedDamage.Amount));
+            var remainingDamage = Capacities[direction].Decrease(mitigatedDamage.Amount);
+            return new Damage(damage.Type, remainingDamage, damage.From);
         }
 
         public override void OnInstall(Entity owner)
@@ -48,17 +56,21 @@ namespace ModularShips.Core.Modules
         public override void Update(TimeSpan deltaT, Entity owner)
         {
             base.Update(deltaT, owner);
-            if (IsDisabled || Capacity.IsMax)
+            if (IsDisabled)
             {
                 return;
             }
 
-            Capacity += (int) Math.Round(Regeneration * deltaT.TotalSeconds);
+            foreach (var direction in (Direction[]) Enum.GetValues(typeof(Direction)))
+            {
+                Capacities[direction] += (int) Math.Round(Regeneration * deltaT.TotalSeconds);
+            }
         }
 
         public override string ToString()
         {
-            return $"[SHIELD] Capacity={Capacity}, Regeneration={Regeneration}, Resists={Resists}, Power={CurrentPower}/{Template.Shield.Power}";
+            return
+                $"[SHIELD] Capacities=<{Capacities[Direction.Ahead]} {Capacities[Direction.Starboard]} {Capacities[Direction.Astern]} {Capacities[Direction.Port]}>, Regeneration={Regeneration}, Resists={Resists}, Power={CurrentPower}/{Template.Shield.Power}";
         }
     }
 }
