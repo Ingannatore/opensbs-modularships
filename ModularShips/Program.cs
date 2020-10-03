@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
-using ModularShips.Core;
 using ModularShips.Core.Entities;
 using ModularShips.Core.Models;
 using ModularShips.Core.Models.Enums;
@@ -20,9 +19,9 @@ namespace ModularShips
             var factory = new EntityFactory(library);
 
             var viper = factory.Create("TEST", library.Get("ship:small:viper"));
-            var powerplant = viper.Modules.Get<PowerplantModule>(EntitySubcategory.ModulePowerplant);
-            var engine = viper.Modules.Get<EngineModule>(EntitySubcategory.ModuleEngine);
-            var shield = viper.Modules.Get<ShieldModule>(EntitySubcategory.ModuleShield);
+            var powerplant = viper.Hull.GetModule<PowerplantModule>(EntitySubcategory.ModulePowerplant);
+            var engine = viper.Hull.GetModule<EngineModule>(EntitySubcategory.ModuleEngine);
+            var shield = viper.Hull.GetModule<ShieldModule>(EntitySubcategory.ModuleShield);
 
             var messages = new Dictionary<int, Message>
             {

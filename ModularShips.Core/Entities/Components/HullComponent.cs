@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ModularShips.Core.Models;
 using ModularShips.Core.Models.Enums;
-using ModularShips.Core.Models.Interfaces;
+using ModularShips.Core.Modules;
 
 namespace ModularShips.Core.Entities.Components
 {
@@ -10,48 +10,49 @@ namespace ModularShips.Core.Entities.Components
     {
         public BoundedValue Hitpoints { get; private set; }
         public bool IsDestroyed => Hitpoints.Current <= 0;
-
-        private readonly IDictionary<DefenseLayer, IDamageable> _defenses;
+        public ModulesCollection Modules { get; }
 
         public HullComponent(int hitpoints)
         {
             Hitpoints = new BoundedValue(hitpoints);
-            _defenses = new Dictionary<DefenseLayer, IDamageable>();
+            Modules = new ModulesCollection();
         }
 
-        public void SetDefense(DefenseLayer layer, IDamageable defense)
+        public void InstallModule(StarshipModule module, HullLocation location)
         {
-            if (defense == null)
-            {
-                _defenses.Remove(layer);
-            }
-            else
-            {
-                _defenses[layer] = defense;
-            }
+            Modules.AddModule(module, location);
         }
 
-        public void ApplyDamage(Damage damage)
+        public T GetModule<T>(EntitySubcategory subcategory) where T : StarshipModule
         {
-            foreach (var direction in (Direction[]) Enum.GetValues(typeof(Direction)))
-            {
-                ApplyDamage(damage, direction);
-            }
+            return Modules.Find<T>(subcategory);
+        }
+
+        public IEnumerable<T> GetModules<T>(EntitySubcategory subcategory) where T : StarshipModule
+        {
+            return Modules.FindAll<T>(subcategory);
         }
 
         public void ApplyDamage(Damage damage, Direction direction)
         {
-            if (_defenses.ContainsKey(DefenseLayer.Shield))
+            if (damage.IsZero)
             {
-                damage = _defenses[DefenseLayer.Shield].ApplyDamage(damage, direction);
+                return;
             }
 
-            if (_defenses.ContainsKey(DefenseLayer.Armor))
-            {
-                damage = _defenses[DefenseLayer.Armor].ApplyDamage(damage, direction);
-            }
-
+            var moduleDamage = new ModuleDamage(damage.Amount, Hitpoints.Current, direction);
             Hitpoints -= damage.Amount;
+            Modules.ApplyDamage(moduleDamage);
+        }
+
+        public void HandleModuleMessage(Message message)
+        {
+            Modules.Get(message.ModuleId).HandleMessage(message);
+        }
+
+        public void Update(TimeSpan deltaT, Entity owner)
+        {
+            Modules.Update(deltaT, owner);
         }
 
         public override string ToString()

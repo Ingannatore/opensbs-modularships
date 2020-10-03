@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 using ModularShips.Core.Models.Enums;
 using ModularShips.Core.Utils;
@@ -26,14 +27,19 @@ namespace ModularShips.Core.Entities.Components
             MoveBody(deltaT);
         }
 
-        public Direction GetDirection(Vector3 point)
+        public IEnumerable<Direction> GetDirections(Vector3? point)
         {
-            return Angles.ToDirection(Vectors.AngleBetween(point - Position, Direction));
+            if (point.HasValue)
+            {
+                return new[] {Angles.ToDirection(Vectors.AngleBetween(point.Value - Position, Direction))};
+            }
+
+            return (Direction[]) Enum.GetValues(typeof(Direction));
         }
 
         public override string ToString()
         {
-            return $"[BODY] Position={Position}, Direction={Direction}, LinearSpeed={LinearSpeed}, AngularSpeed={AngularSpeed}";
+            return $"[BODY] Pos={Position}, Dir={Direction}, Speed={LinearSpeed}, AngularSpeed={AngularSpeed}";
         }
 
         private void RotateBody(TimeSpan deltaT)

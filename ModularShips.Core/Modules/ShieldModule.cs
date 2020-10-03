@@ -46,12 +46,12 @@ namespace ModularShips.Core.Modules
 
         public override void OnInstall(Entity owner)
         {
-            owner.Hull.SetDefense(DefenseLayer.Shield, this);
+            owner.Defenses.SetDefense(DefenseLayer.Shield, this);
         }
 
         public override void OnUninstall(Entity owner)
         {
-            owner.Hull.SetDefense(DefenseLayer.Shield, null);
+            owner.Defenses.SetDefense(DefenseLayer.Shield, null);
         }
 
         public override void Update(TimeSpan deltaT, Entity owner)

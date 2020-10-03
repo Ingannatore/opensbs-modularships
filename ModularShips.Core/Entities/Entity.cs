@@ -3,6 +3,7 @@ using System.Numerics;
 using ModularShips.Core.Entities.Components;
 using ModularShips.Core.Models;
 using ModularShips.Core.Models.Enums;
+using ModularShips.Core.Modules;
 using ModularShips.Core.Templates;
 
 namespace ModularShips.Core.Entities
@@ -15,7 +16,7 @@ namespace ModularShips.Core.Entities
         public BodyComponent Body { get; }
         public HullComponent Hull { get; }
         public PowergridComponent Powergrid { get; }
-        public ModuleCollection Modules { get; }
+        public DefensesComponent Defenses { get; }
 
         public Entity(string name, Template template) : base(template)
         {
@@ -23,14 +24,20 @@ namespace ModularShips.Core.Entities
             Body = new BodyComponent(template.Mass, Vector3.Zero, Vector3.UnitX);
             Hull = new HullComponent(template.Hitpoints);
             Powergrid = new PowergridComponent();
-            Modules = new ModuleCollection();
+            Defenses = new DefensesComponent();
+        }
+
+        public void InstallModule(StarshipModule module, HullLocation location)
+        {
+            Hull.InstallModule(module, location);
+            module.OnInstall(this);
         }
 
         public void HandleMessage(Message message)
         {
             if (message.RecipientType == RecipientType.Module)
             {
-                Modules.HandleMessage(message);
+                Hull.HandleModuleMessage(message);
                 return;
             }
 
@@ -45,22 +52,19 @@ namespace ModularShips.Core.Entities
         public void Update(TimeSpan deltaT)
         {
             Powergrid.Reset();
-            Modules.Update(deltaT, this);
+            Hull.Update(deltaT, this);
             Powergrid.Update(deltaT);
             Body.Update(deltaT);
         }
 
         private void ApplyDamage(Damage damage)
         {
-            if (damage.IsDirectional)
+            var directions = Body.GetDirections(damage.From);
+            foreach (var direction in directions)
             {
-                Hull.ApplyDamage(damage, Body.GetDirection(damage.From.Value));
+                damage = Defenses.ApplyDamage(damage, direction);
+                Hull.ApplyDamage(damage, direction);
             }
-            else
-            {
-                Hull.ApplyDamage(damage);
-            }
-
         }
     }
 }

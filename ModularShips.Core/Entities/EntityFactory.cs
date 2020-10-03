@@ -19,7 +19,7 @@ namespace ModularShips.Core.Entities
             var entity = new Entity(name, template);
             foreach (var slot in template.Starship.Slots)
             {
-                entity.Modules.Add(CreateModule(slot.ModuleId), entity);
+                entity.InstallModule(CreateModule(slot.ModuleId), slot.Location);
             }
 
             return entity;

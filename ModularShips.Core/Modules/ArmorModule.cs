@@ -38,12 +38,12 @@ namespace ModularShips.Core.Modules
 
         public override void OnInstall(Entity owner)
         {
-            owner.Hull.SetDefense(DefenseLayer.Armor, this);
+            owner.Defenses.SetDefense(DefenseLayer.Armor, this);
         }
 
         public override void OnUninstall(Entity owner)
         {
-            owner.Hull.SetDefense(DefenseLayer.Armor, null);
+            owner.Defenses.SetDefense(DefenseLayer.Armor, null);
         }
 
         public override void HandleMessage(Message message) { }

@@ -7,12 +7,17 @@ namespace ModularShips.Core.Modules
 {
     public abstract class StarshipModule : Thing, IComparable
     {
-        public BoundedValue Hitpoints { get; }
+        public BoundedValue Hitpoints { get; protected set; }
         public int Priority { get; protected set; }
 
         protected StarshipModule(Template template) : base(template)
         {
             Hitpoints = new BoundedValue(template.Hitpoints);
+        }
+
+        public void ApplyDamage(int amount)
+        {
+            Hitpoints -= amount;
         }
 
         public int CompareTo(object obj)

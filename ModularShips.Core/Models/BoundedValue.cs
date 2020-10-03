@@ -8,6 +8,7 @@ namespace ModularShips.Core.Models
         public int Min { get; }
         public int Current { get; private set; }
         public bool IsMax => Current == Max;
+        public bool IsMin => Current == Min;
 
         public BoundedValue(int max, int min = 0)
         {

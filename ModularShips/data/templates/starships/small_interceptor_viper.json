@@ -11,27 +11,27 @@
     "starship": {
         "slots": [
             {
-                "section": "Bow",
+                "location": "Bow",
                 "moduleId": "weapon:beam:small:monoemitter"
             },
             {
-                "section": "Bow",
+                "location": "Bow",
                 "moduleId": "weapon:beam:small:monoemitter"
             },
             {
-                "section": "Middle",
+                "location": "Amid",
                 "moduleId": "sensors:small:radar"
             },
             {
-                "section": "Middle",
-                "moduleId": "powerplant:small:fusion"
-            },
-            {
-                "section": "Middle",
+                "location": "Amid",
                 "moduleId": "shield:small:multilayer"
             },
             {
-                "section": "Stern",
+                "location": "Stern",
+                "moduleId": "powerplant:small:fusion"
+            },
+            {
+                "location": "Stern",
                 "moduleId": "engine:small:ion"
             }
         ]
