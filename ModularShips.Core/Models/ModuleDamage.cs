@@ -1,7 +1,7 @@
 ﻿using System;
 using ModularShips.Core.Models.Enums;
 
-namespace ModularShips.Core.Modules
+namespace ModularShips.Core.Models
 {
     public class ModuleDamage
     {

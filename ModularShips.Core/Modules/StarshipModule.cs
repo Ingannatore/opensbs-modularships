@@ -7,8 +7,9 @@ namespace ModularShips.Core.Modules
 {
     public abstract class StarshipModule : Thing, IComparable
     {
-        public BoundedValue Hitpoints { get; protected set; }
+        public BoundedValue Hitpoints { get; private set; }
         public int Priority { get; protected set; }
+        protected double Efficacy => (double) Hitpoints.Current / Hitpoints.Max;
 
         protected StarshipModule(Template template) : base(template)
         {

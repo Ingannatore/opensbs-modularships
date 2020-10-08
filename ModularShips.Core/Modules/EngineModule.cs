@@ -81,14 +81,14 @@ namespace ModularShips.Core.Modules
             var linearSpeedDirection = Math.Sign(targetSpeed - currentLinearSpeed);
             if (linearSpeedDirection < 0)
             {
-                var deceleration = PowerFactor * Template.Engine.Deceleration;
+                var deceleration = PowerFactor * Template.Engine.Deceleration * Efficacy;
                 var deltaSpeed = deceleration * deltaT.TotalSeconds;
                 return Math.Max(currentLinearSpeed - deltaSpeed, -Template.Engine.MaximumSpeed);
             }
 
             if (linearSpeedDirection > 0)
             {
-                var acceleration = PowerFactor * Template.Engine.Acceleration;
+                var acceleration = PowerFactor * Template.Engine.Acceleration * Efficacy;
                 var deltaSpeed = acceleration * deltaT.TotalSeconds;
                 return Math.Min(currentLinearSpeed + deltaSpeed, Template.Engine.MaximumSpeed);
             }

@@ -30,7 +30,7 @@ namespace ModularShips.Core.Modules
         {
             if (!IsDisabled)
             {
-                Capacity += (int) Math.Round(CurrentPower * deltaT.TotalSeconds);
+                Capacity += (int) Math.Round(CurrentPower * Efficacy * deltaT.TotalSeconds);
             }
         }
 

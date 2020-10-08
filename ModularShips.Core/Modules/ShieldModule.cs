@@ -64,7 +64,7 @@ namespace ModularShips.Core.Modules
 
             foreach (var direction in (Direction[]) Enum.GetValues(typeof(Direction)))
             {
-                Capacities[direction] += (int) Math.Round(Regeneration * deltaT.TotalSeconds);
+                Capacities[direction] += (int) Math.Round(Regeneration * Efficacy * deltaT.TotalSeconds);
             }
         }
 
